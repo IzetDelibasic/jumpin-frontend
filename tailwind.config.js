@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        subtitle: "Outfit",
+        title: "Bebas Neue",
+        about: "Work Sans",
+        montserrat: "Montserrat",
+      },
+    },
   },
   plugins: [],
 };
