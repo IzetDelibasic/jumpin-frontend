@@ -2,7 +2,7 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // - Pages -
-import { Home, Landing } from "./pages/index.js";
+import { Home, Landing, Register, Login, Dashboard } from "./pages/index.js";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +12,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
