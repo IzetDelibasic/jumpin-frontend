@@ -106,16 +106,18 @@ const Register = () => {
             onChange={handleInputChange}
           />
           <FormRow
-            type="text"
+            type="phone"
             name="phoneNumber"
             labelText="Phone Number"
             onChange={handleInputChange}
+            placeholder="123-456-7890"
           />
           <FormRow
             type="email"
             name="email"
             labelText="Email"
             onChange={handleInputChange}
+            placeholder="example@gmail.com"
           />
           <FormRow
             type="password"
