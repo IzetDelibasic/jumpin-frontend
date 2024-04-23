@@ -24,7 +24,7 @@ const Landing = () => {
           Jumpin
         </div>
       </div>
-      <div className="flex items-center justify-center lg:mt-10 mt-2 lg:pt-[2rem] font-montserrat bg-white bg-opacity-75 xl:w-[70%] md:w-[70%] w-[95%] mx-auto rounded-xl">
+      <div className="flex items-center justify-center lg:mt-[6rem] mt-2 lg:pt-[2rem] font-montserrat bg-white bg-opacity-75 xl:w-[70%] md:w-[70%] w-[95%] mx-auto rounded-xl">
         <div className="max-w-screen-lg flex lg:flex-row lg:justify-between flex-col-reverse sm:flex-col justify-center mx-auto px-6 lg:py-12 py-6 items-center text-center">
           <div className="flex flex-col items-center lg:w-[60%] w-[90%] sm:mb-10 lg:mb-0">
             <h1 className="md:text-3xl text-xl font-bold mb-4">
