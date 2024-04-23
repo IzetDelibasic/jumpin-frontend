@@ -5,6 +5,8 @@ import { useNavigate, Link, Form } from "react-router-dom";
 import { logoImage } from "../../constants/ImageConstant";
 import { FormRow } from "../../components";
 import { backgroundImage } from "../../constants/ImageConstant";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,6 +15,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formValid, setFormValid] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +47,27 @@ const Register = () => {
     );
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userData = {
+      firstName,
+      lastName,
+      email,
+      password,
+      phoneNumber,
+    };
+    try {
+      const response = await axios.post(
+        "https://localhost:7065/api/User/UserRegistration",
+        userData
+      );
+      toast.success("Registration successful!");
+      navigate("/login");
+    } catch (err) {
+      toast.error(err?.response?.data?.msg || "An error occurred!");
+      return err;
+    }
+  };
 
   return (
     <div
