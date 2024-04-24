@@ -39,7 +39,7 @@ const LoginPage = () => {
       toast.success("Login successful!");
       navigate("/dashboard");
     } catch (err) {
-      toast.error(err?.response?.data?.msg || "An error occurred");
+      toast.error("An error occurred");
       return err;
     }
   };

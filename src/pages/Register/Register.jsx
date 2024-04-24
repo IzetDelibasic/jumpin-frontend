@@ -1,12 +1,13 @@
 // -React-
 import React, { useState } from "react";
 import { useNavigate, Link, Form } from "react-router-dom";
-// -Components-
-import { logoImage } from "../../constants/ImageConstant";
-import { FormRow } from "../../components";
-import { backgroundImage } from "../../constants/ImageConstant";
-import axios from "axios";
 import { toast } from "react-toastify";
+// -Constants-
+import { logoImage, backgroundImage } from "../../constants/ImageConstant";
+// -Components-
+import { FormRow } from "../../components";
+// -Axios-
+import axios from "axios";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -64,7 +65,7 @@ const Register = () => {
       toast.success("Registration successful!");
       navigate("/login");
     } catch (err) {
-      toast.error(err?.response?.data?.msg || "An error occurred!");
+      toast.error("An error occurred!");
       return err;
     }
   };
