@@ -1,3 +1,5 @@
+export { default as AllRoutes } from "./AllRoutes/AllRoutes.jsx";
+
 export { default as Dashboard } from "./Dashboard/Dashboard.jsx";
 
 export { default as Home } from "./Home/Home.jsx";
