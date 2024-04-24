@@ -34,8 +34,17 @@ const LoginPage = () => {
         "https://localhost:7065/api/User/UserLogin",
         userData
       );
-      //const { token } = response.data;
-      //localStorage.setItem("token", token);
+      const { firstName, lastName, email, phoneNumber } = response.data;
+      const loggedInUserData = {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+      };
+      localStorage.setItem(
+        "loggedInUserData",
+        JSON.stringify(loggedInUserData)
+      );
       toast.success("Login successful!");
       navigate("/dashboard");
     } catch (err) {
