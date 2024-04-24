@@ -7,10 +7,16 @@ const AllRoutes = () => {
 
   return (
     <div>
-      <div className="container mx-auto p-4">
+      <h1 className="text-[2rem] font-medium text-center text-white mt-4 font-montserrat bg-blue-500 w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
+        Find Your Destination - Jumpin Routes
+      </h1>
+      <div className="flex font-montserrat mx-auto p-4">
         {data.length > 0 ? (
           data.map((item, index) => (
-            <div className="bg-white rounded-lg shadow-md p-6 mb-4" key={index}>
+            <div
+              className="bg-white rounded-lg shadow-md p-6 mb-4 lg:w-[20%] lg:mr-4 text-center"
+              key={index}
+            >
               <div className="mb-4">
                 <h2 className="text-xl font-bold">
                   {item.user.firstName} {item.user.lastName}

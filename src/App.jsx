@@ -9,6 +9,8 @@ import {
   Login,
   Dashboard,
   AllRoutes,
+  AddRoute,
+  Profile,
 } from "./pages/index.js";
 
 const router = createBrowserRouter([
@@ -21,20 +23,28 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/dashboard",
+        path: "dashboard",
         element: <Dashboard />,
         children: [
           {
             index: true,
             element: <AllRoutes />,
+          },
+          {
+            path: "add-route",
+            element: <AddRoute />,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
           },
         ],
       },
