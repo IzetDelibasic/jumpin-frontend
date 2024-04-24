@@ -14,7 +14,7 @@ const AllRoutes = () => {
         {data.length > 0 ? (
           data.map((item, index) => (
             <div
-              className="bg-white rounded-lg shadow-md p-6 mb-4 lg:w-[20%] lg:mr-4 text-center"
+              className="bg-white rounded-lg shadow-md p-6 mb-4 lg:w-[25%] lg:mr-4 text-center"
               key={index}
             >
               <div className="mb-4">
@@ -27,7 +27,10 @@ const AllRoutes = () => {
               <div>
                 <h3 className="text-lg font-bold mb-2">{item.route.name}</h3>
                 <p>Seats: {item.route.seatsNumber}</p>
-                <p>Date & Time: {item.route.dateAndTime}</p>
+                <p>
+                  Date & Time:{" "}
+                  {new Date(item.route.dateAndTime).toLocaleDateString("en-GB")}
+                </p>
                 <p>Price: {item.route.price}</p>
                 <p>Description: {item.route.description}</p>
               </div>
