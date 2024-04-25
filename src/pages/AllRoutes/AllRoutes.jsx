@@ -29,7 +29,7 @@ const AllRoutes = () => {
                 <p>Seats: {item.route.seatsNumber}</p>
                 <p>
                   Date & Time:
-                  {new Date(item.route.dateAndTime).toLocaleDateString("en-GB")}
+                  {item.route.dateAndTime}
                 </p>
                 <p>Price: {item.route.price}</p>
                 <p>Description: {item.route.description}</p>

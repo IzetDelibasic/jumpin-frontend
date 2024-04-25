@@ -51,12 +51,9 @@ const Profile = () => {
           User Routes
         </h2>
         {userRoutes.map((route, index) => (
-          <div>
+          <div key={index}>
             <div>Route number: {index + 1}</div>
-            <div
-              key={index}
-              className="border rounded-lg flex flex-col p-4 mb-4"
-            >
+            <div className="border rounded-lg flex flex-col p-4 mb-4">
               <div className="font-medium">{route.name}</div>
               <div className="font-normal">
                 Seats Number: {route.seatsNumber}

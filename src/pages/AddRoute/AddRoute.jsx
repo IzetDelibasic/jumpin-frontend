@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { Form, useNavigate } from "react-router-dom";
 import { FormRow } from "../../components";
@@ -11,6 +13,7 @@ const AddRoute = () => {
   const [seatsNumber, setSeatsNumber] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [dateAndTime, setDateAndTime] = useState(new Date());
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -28,7 +31,7 @@ const AddRoute = () => {
           route: {
             name: routeName,
             seatsNumber: seatsNumber,
-            dateAndTime: new Date().toISOString(),
+            dateAndTime: dateAndTime.toString(),
             price: price,
             description: description,
           },
@@ -54,6 +57,24 @@ const AddRoute = () => {
         className="flex flex-col items-center bg-white w-[70%] mx-auto mt-10 font-montserrat px-4 py-10 rounded-md shadow-2xl"
         onSubmit={handleSubmit}
       >
+        <div className="mb-4 ">
+          <label
+            htmlFor="dateAndTime"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Date and Time
+          </label>
+          <DatePicker
+            id="dateAndTime"
+            selected={dateAndTime}
+            onChange={(date) => setDateAndTime(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            timeCaption="time"
+            dateFormat="d MMMM, yyyy h:mm aa"
+          />
+        </div>
         <FormRow
           type="text"
           name="routeName"
