@@ -28,8 +28,12 @@ const AllRoutes = () => {
                 <h3 className="text-lg font-bold mb-2">{item.route.name}</h3>
                 <p>Seats: {item.route.seatsNumber}</p>
                 <p>
-                  Date & Time:
-                  {item.route.dateAndTime}
+                  Date & Time:{" "}
+                  {new Date(item.route.dateAndTime).toLocaleDateString(
+                    "en-GB"
+                  ) +
+                    " " +
+                    new Date(item.route.dateAndTime).toLocaleTimeString()}
                 </p>
                 <p>Price: {item.route.price}</p>
                 <p>Description: {item.route.description}</p>

@@ -6,8 +6,11 @@ import { Form, useNavigate } from "react-router-dom";
 import { FormRow } from "../../components";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const AddRoute = () => {
+  const { data, firstName, lastName, email, phoneNumber } =
+    useDashboardContext();
   const [routeName, setRouteName] = useState("");
   const [seatsNumber, setSeatsNumber] = useState("");
   const [price, setPrice] = useState("");
@@ -17,14 +20,18 @@ const AddRoute = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const token = Cookies.get("jwtToken");
-    console.log(token);
     try {
+      const token = localStorage.getItem("jwtToken");
       console.log(token);
       const response = await axios.post(
         "https://localhost:7065/api/Route/AddRoute",
         {
-          userToken: token,
+          user: {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+          },
           route: {
             name: routeName,
             seatsNumber: parseInt(seatsNumber),
@@ -32,6 +39,9 @@ const AddRoute = () => {
             price: parseFloat(price),
             description: description,
           },
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 

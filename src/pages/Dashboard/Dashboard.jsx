@@ -7,7 +7,7 @@ export const DashboardContext = createContext();
 
 const Dashboard = () => {
   const storedUserData = localStorage.getItem("loggedInUserData");
-  const { firstName, lastName, email, phoneNumber } = storedUserData
+  const { firstName, lastName, email, phoneNumber, userToken } = storedUserData
     ? JSON.parse(storedUserData)
     : { firstName: "", lastName: "", email: "", phoneNumber: "" };
   const [data, setData] = useState([]);
@@ -15,7 +15,11 @@ const Dashboard = () => {
   useEffect(() => {
     try {
       axios
-        .get("https://localhost:7065/api/Route/GetRoutes")
+        .get("https://localhost:7065/api/Route/GetRoutes", {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
         .then((response) => {
           setData(response.data);
         });
@@ -37,7 +41,9 @@ const Dashboard = () => {
       <div className="bg-gray-200 min-h-screen flex flex-col">
         <Navbar />
         <div className="">
-          <Outlet context={{ firstName, lastName, email, phoneNumber }} />
+          <Outlet
+            context={{ firstName, lastName, email, phoneNumber, userToken }}
+          />
         </div>
       </div>
     </DashboardContext.Provider>

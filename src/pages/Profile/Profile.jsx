@@ -4,18 +4,18 @@ import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
 
 const Profile = () => {
-  const { data, firstName, lastName, email, phoneNumber } =
+  const { data, firstName, lastName, email, phoneNumber, userToken } =
     useDashboardContext();
   const [userRoutes, setUserRoutes] = useState([]);
 
   useEffect(() => {
     const getUserRoutes = async () => {
-      const response = await axios.post(
+      const token = localStorage.getItem("jwtToken");
+      const response = await axios.get(
         "https://localhost:7065/api/User/GetUserRoutes",
-        email,
         {
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -23,7 +23,7 @@ const Profile = () => {
     };
 
     getUserRoutes();
-  }, [email]);
+  }, []);
 
   return (
     <div className="flex md:flex-row flex-col">
@@ -59,8 +59,10 @@ const Profile = () => {
                 Seats Number: {route.seatsNumber}
               </div>
               <div className="font-normal">
-                Date and Time:
-                {new Date(route.dateAndTime).toLocaleDateString("en-GB")}
+                Date and Time:{" "}
+                {new Date(route.dateAndTime).toLocaleDateString("en-GB") +
+                  " " +
+                  new Date(route.dateAndTime).toLocaleTimeString()}
               </div>
               <div className="font-normal">Price: {route.price}</div>
               <div className="font-normal">

@@ -8,6 +8,8 @@ import { logoImage, backgroundImage } from "../../constants/ImageConstant";
 import axios from "axios";
 // -Components-
 import { FormRow } from "../../components";
+// -Cookies-
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -34,18 +36,23 @@ const LoginPage = () => {
         "https://localhost:7065/api/User/UserLogin",
         userData
       );
-      const { firstName, lastName, email, phoneNumber } = response.data;
+      const { firstName, lastName, email, phoneNumber, userToken } =
+        response.data;
       const loggedInUserData = {
         firstName,
         lastName,
         email,
         phoneNumber,
+        userToken,
       };
       localStorage.setItem(
         "loggedInUserData",
         JSON.stringify(loggedInUserData)
       );
+      localStorage.setItem("jwtToken", userToken);
       toast.success("Login successful!");
+      console.log(response);
+
       navigate("/dashboard");
     } catch (err) {
       toast.error("An error occurred");
