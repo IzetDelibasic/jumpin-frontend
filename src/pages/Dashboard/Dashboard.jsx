@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     try {
       axios
-        .get("https://localhost:7065/api/User/GetRoutes")
+        .get("https://localhost:7065/api/Route/GetRoutes")
         .then((response) => {
           setData(response.data);
         });

@@ -4,11 +4,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { Form, useNavigate } from "react-router-dom";
 import { FormRow } from "../../components";
-import { useDashboardContext } from "../Dashboard/Dashboard";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const AddRoute = () => {
-  const { firstName, lastName, email, phoneNumber } = useDashboardContext();
   const [routeName, setRouteName] = useState("");
   const [seatsNumber, setSeatsNumber] = useState("");
   const [price, setPrice] = useState("");
@@ -18,21 +17,19 @@ const AddRoute = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const token = Cookies.get("jwtToken");
+    console.log(token);
     try {
+      console.log(token);
       const response = await axios.post(
-        "https://localhost:7065/api/User/AddRoute",
+        "https://localhost:7065/api/Route/AddRoute",
         {
-          user: {
-            firstName,
-            lastName,
-            email,
-            phoneNumber,
-          },
+          userToken: token,
           route: {
             name: routeName,
-            seatsNumber: seatsNumber,
-            dateAndTime: dateAndTime.toString(),
-            price: price,
+            seatsNumber: parseInt(seatsNumber),
+            dateAndTime: dateAndTime.toISOString(),
+            price: parseFloat(price),
             description: description,
           },
         }
