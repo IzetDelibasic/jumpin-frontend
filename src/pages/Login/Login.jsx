@@ -45,6 +45,7 @@ const LoginPage = () => {
         phoneNumber,
         userToken,
       };
+      localStorage.clear();
       localStorage.setItem(
         "loggedInUserData",
         JSON.stringify(loggedInUserData)

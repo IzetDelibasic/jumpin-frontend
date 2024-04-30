@@ -1,9 +1,61 @@
 import React from "react";
+import axios from "axios";
 import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const AllRoutes = () => {
   const { data, firstName, lastName, email, phoneNumber } =
     useDashboardContext();
+
+  const handleButtonClick = async (route, routeOwnerEmail) => {
+    if (routeOwnerEmail === email) {
+      alert("You can't send a request for your own route!");
+      return;
+    }
+
+    const description = window.prompt("Enter description:");
+
+    if (description) {
+      const userRoute = {
+        userRoute: {
+          user: {
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+          },
+          route: {
+            name: route.name,
+            seatsNumber: route.seatsNumber,
+            dateAndTime: route.dateAndTime,
+            price: route.price,
+            description: route.description,
+          },
+        },
+        description,
+        status: "Pending",
+      };
+
+      const token = localStorage.getItem("jwtToken");
+
+      try {
+        const response = await axios.post(
+          "https://localhost:7065/api/Request/SendRequest",
+          userRoute,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      alert("Description is required!");
+    }
+  };
 
   return (
     <div>
@@ -37,6 +89,11 @@ const AllRoutes = () => {
                 </p>
                 <p>Price: {item.route.price}</p>
                 <p>Description: {item.route.description}</p>
+                <button
+                  onClick={() => handleButtonClick(item.route, item.user.email)}
+                >
+                  Send Request
+                </button>
               </div>
             </div>
           ))

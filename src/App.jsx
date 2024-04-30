@@ -11,6 +11,7 @@ import {
   AllRoutes,
   AddRoute,
   Profile,
+  Requests,
 } from "./pages/index.js";
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
           {
             path: "profile",
             element: <Profile />,
+          },
+          {
+            path: "requests",
+            element: <Requests />,
           },
         ],
       },

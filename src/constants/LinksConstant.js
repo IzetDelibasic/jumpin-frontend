@@ -11,4 +11,8 @@ export const Links = [
     title: "Profile",
     href: "/dashboard/profile",
   },
+  {
+    title: "Requests",
+    href: "/dashboard/requests",
+  },
 ];

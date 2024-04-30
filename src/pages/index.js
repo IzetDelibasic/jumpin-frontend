@@ -13,3 +13,5 @@ export { default as Login } from "./Login/Login.jsx";
 export { default as Profile } from "./Profile/Profile.jsx";
 
 export { default as Register } from "./Register/Register.jsx";
+
+export { default as Requests } from "./Requests/Requests.jsx";

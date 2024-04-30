@@ -2,9 +2,11 @@ import React from "react";
 import { FaLocationArrow } from "react-icons/fa";
 import { useDashboardContext } from "../../pages/Dashboard/Dashboard";
 import { Links } from "../../constants/LinksConstant";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { firstName, lastName, email, phoneNumber } = useDashboardContext();
+  const navigate = useNavigate();
   return (
     <div className="bg-blue-500 border-b-2 border-black border-opacity-20 font-montserrat">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -34,6 +36,14 @@ const Navbar = () => {
                 {firstName} {lastName}
               </a>
             </li>
+            <button
+              onClick={() => {
+                localStorage.removeItem("jwtToken");
+                window.location.href = "/";
+              }}
+            >
+              Logout
+            </button>
           </ul>
         </div>
       </div>
