@@ -7,7 +7,11 @@ const AllRoutes = () => {
     useDashboardContext();
 
   const handleButtonClick = async (route, routeOwnerEmail) => {
-    if (routeOwnerEmail === email) {
+    const user = JSON.parse(localStorage.getItem("loggedInUserData"));
+    const currentUserEmail = user ? user.email : null;
+    console.log(currentUserEmail);
+
+    if (routeOwnerEmail === currentUserEmail) {
       alert("You can't send a request for your own route!");
       return;
     }
@@ -20,7 +24,7 @@ const AllRoutes = () => {
           user: {
             firstName,
             lastName,
-            email,
+            email: currentUserEmail,
             phoneNumber,
           },
           route: {
@@ -34,7 +38,6 @@ const AllRoutes = () => {
         description,
         status: "Pending",
       };
-
       const token = localStorage.getItem("jwtToken");
 
       try {
