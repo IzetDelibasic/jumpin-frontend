@@ -7,6 +7,8 @@ const Profile = () => {
   const { data, firstName, lastName, email, phoneNumber, userToken } =
     useDashboardContext();
   const [userRoutes, setUserRoutes] = useState([]);
+  const [userRequests, setUserRequests] = useState([]);
+  const [userRecievedRequests, setUserRecievedRequests] = useState([]);
 
   useEffect(() => {
     const getUserRoutes = async () => {
@@ -22,7 +24,43 @@ const Profile = () => {
       setUserRoutes(response.data);
     };
 
+    const getUserSentRequests = async () => {
+      const token = localStorage.getItem("jwtToken");
+      try {
+        const response = await axios.get(
+          "https://localhost:7065/api/User/GetSentRequests",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUserRequests(response.data);
+      } catch (error) {
+        console.error("Error fetching sent requests:", error);
+      }
+    };
+
+    const getRecievedRequests = async () => {
+      const token = localStorage.getItem("jwtToken");
+      try {
+        const response = await axios.get(
+          "https://localhost:7065/api/User/GetRecievedRequests",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUserRecievedRequests(response.data);
+      } catch (error) {
+        console.error("Error fetching received requests:", error);
+      }
+    };
+
     getUserRoutes();
+    getUserSentRequests();
+    getRecievedRequests();
   }, []);
 
   return (
@@ -51,6 +89,54 @@ const Profile = () => {
           User Routes
         </h2>
         {userRoutes.map((route, index) => (
+          <div key={index}>
+            <div>Route number: {index + 1}</div>
+            <div className="border rounded-lg flex flex-col p-4 mb-4">
+              <div className="font-medium">{route.name}</div>
+              <div className="font-normal">
+                Seats Number: {route.seatsNumber}
+              </div>
+              <div className="font-normal">
+                Date and Time:{" "}
+                {new Date(route.dateAndTime).toLocaleDateString("en-GB") +
+                  " " +
+                  new Date(route.dateAndTime).toLocaleTimeString()}
+              </div>
+              <div className="font-normal">Price: {route.price}</div>
+              <div className="font-normal">
+                Description: {route.description}
+              </div>
+            </div>
+          </div>
+        ))}
+        <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
+          User Requests
+        </h2>
+        {userRequests.map((route, index) => (
+          <div key={index}>
+            <div>Route number: {index + 1}</div>
+            <div className="border rounded-lg flex flex-col p-4 mb-4">
+              <div className="font-medium">{route.name}</div>
+              <div className="font-normal">
+                Seats Number: {route.seatsNumber}
+              </div>
+              <div className="font-normal">
+                Date and Time:{" "}
+                {new Date(route.dateAndTime).toLocaleDateString("en-GB") +
+                  " " +
+                  new Date(route.dateAndTime).toLocaleTimeString()}
+              </div>
+              <div className="font-normal">Price: {route.price}</div>
+              <div className="font-normal">
+                Description: {route.description}
+              </div>
+            </div>
+          </div>
+        ))}
+        <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
+          Recieved Requests
+        </h2>
+        {userRecievedRequests.map((route, index) => (
           <div key={index}>
             <div>Route number: {index + 1}</div>
             <div className="border rounded-lg flex flex-col p-4 mb-4">

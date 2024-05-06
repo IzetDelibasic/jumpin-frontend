@@ -6,12 +6,11 @@ const AllRoutes = () => {
   const { data, firstName, lastName, email, phoneNumber } =
     useDashboardContext();
 
-  const handleButtonClick = async (route, routeOwnerEmail) => {
+  const handleButtonClick = async (route, routeOwner) => {
     const user = JSON.parse(localStorage.getItem("loggedInUserData"));
     const currentUserEmail = user ? user.email : null;
-    console.log(currentUserEmail);
 
-    if (routeOwnerEmail === currentUserEmail) {
+    if (routeOwner.email === currentUserEmail) {
       alert("You can't send a request for your own route!");
       return;
     }
@@ -22,10 +21,10 @@ const AllRoutes = () => {
       const userRoute = {
         userRoute: {
           user: {
-            firstName,
-            lastName,
-            email: currentUserEmail,
-            phoneNumber,
+            firstName: routeOwner.firstName,
+            lastName: routeOwner.lastName,
+            email: routeOwner.email,
+            phoneNumber: routeOwner.phoneNumber,
           },
           route: {
             name: route.name,
@@ -93,7 +92,8 @@ const AllRoutes = () => {
                 <p>Price: {item.route.price}</p>
                 <p>Description: {item.route.description}</p>
                 <button
-                  onClick={() => handleButtonClick(item.route, item.user.email)}
+                  onClick={() => handleButtonClick(item.route, item.user)}
+                  className="bg-blue-500 text-white font-medium py-2 px-4 mt-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
                 >
                   Send Request
                 </button>
