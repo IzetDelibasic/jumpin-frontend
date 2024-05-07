@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const AllRoutes = () => {
@@ -11,7 +12,7 @@ const AllRoutes = () => {
     const currentUserEmail = user ? user.email : null;
 
     if (routeOwner.email === currentUserEmail) {
-      alert("You can't send a request for your own route!");
+      toast.error("You can't send a request for your own route!");
       return;
     }
 
@@ -55,7 +56,7 @@ const AllRoutes = () => {
         console.error(error);
       }
     } else {
-      alert("Description is required!");
+      toast.error("Description is required!");
     }
   };
 
