@@ -47,71 +47,75 @@ const Requests = () => {
     getRecievedRequests();
   }, []);
   return (
-    <div className="bg-white md:w-[50%] lg:w-[60%] w-[90%] mx-auto my-4 font-montserrat p-2 rounded-md">
-      <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
-        User Requests
-      </h2>
-      {userRequests.map((request, index) => (
-        <div key={index}>
-          <div>Route number: {index + 1}</div>
-          <div className="border rounded-lg flex flex-col p-4 mb-4 bg-white">
-            <div className="font-medium">{request.userRoute.route.name}</div>
-            <div>
-              Driver: {request.userRoute.user.firstName}{" "}
-              {request.userRoute.user.lastName}
-            </div>
-            <div className="font-normal">
-              Seats Number: {request.userRoute.route.seatsNumber}
-            </div>
-            <div className="font-normal">
-              Date and Time:{" "}
-              {new Date(request.userRoute.route.dateAndTime).toLocaleDateString(
-                "en-GB"
-              ) +
-                " " +
-                new Date(
+    <div className="bg-white md:w-[50%] lg:w-[60%] w-[90%] mx-auto my-4 font-montserrat p-2 rounded-md flex justify-between">
+      <div>
+        <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
+          User Requests
+        </h2>
+        {userRequests.map((request, index) => (
+          <div key={index}>
+            <div>Route number: {index + 1}</div>
+            <div className="border rounded-lg flex flex-col p-4 mb-4 bg-white">
+              <div className="font-medium">{request.userRoute.route.name}</div>
+              <div>
+                Driver: {request.userRoute.user.firstName}{" "}
+                {request.userRoute.user.lastName}
+              </div>
+              <div className="font-normal">
+                Seats Number: {request.userRoute.route.seatsNumber}
+              </div>
+              <div className="font-normal">
+                Date and Time:{" "}
+                {new Date(
                   request.userRoute.route.dateAndTime
-                ).toLocaleTimeString()}
-            </div>
-            <div className="font-normal">
-              Price: {request.userRoute.route.price}
-            </div>
-            <div className="font-normal">
-              Description: {request.description}
+                ).toLocaleDateString("en-GB") +
+                  " " +
+                  new Date(
+                    request.userRoute.route.dateAndTime
+                  ).toLocaleTimeString()}
+              </div>
+              <div className="font-normal">
+                Price: {request.userRoute.route.price}
+              </div>
+              <div className="font-normal">
+                Description: {request.description}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-      <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
-        Recieved Requests
-      </h2>
-      {userRecievedRequests.map((request, index) => (
-        <div key={index}>
-          <div>Route number: {index + 1}</div>
-          <div className="border rounded-lg flex flex-col p-4 mb-4">
-            <div className="font-medium">{request.name}</div>
-            <div className="font-normal">
-              Seats Number: {request.userRoute.route.seatsNumber}
-            </div>
-            <div className="font-normal">
-              Date and Time:{" "}
-              {new Date(request.userRoute.route.dateAndTime).toLocaleDateString(
-                "en-GB"
-              ) +
-                " " +
-                new Date(
+        ))}
+      </div>
+      <div>
+        <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
+          Recieved Requests
+        </h2>
+        {userRecievedRequests.map((request, index) => (
+          <div key={index}>
+            <div>Route number: {index + 1}</div>
+            <div className="border rounded-lg flex flex-col p-4 mb-4">
+              <div className="font-medium">{request.name}</div>
+              <div className="font-normal">
+                Seats Number: {request.userRoute.route.seatsNumber}
+              </div>
+              <div className="font-normal">
+                Date and Time:{" "}
+                {new Date(
                   request.userRoute.route.dateAndTime
-                ).toLocaleTimeString()}
-            </div>
-            <div className="font-normal">
-              Price: {request.userRoute.route.price}
-            </div>
-            <div className="font-normal">
-              Description: {request.description}
+                ).toLocaleDateString("en-GB") +
+                  " " +
+                  new Date(
+                    request.userRoute.route.dateAndTime
+                  ).toLocaleTimeString()}
+              </div>
+              <div className="font-normal">
+                Price: {request.userRoute.route.price}
+              </div>
+              <div className="font-normal">
+                Description: {request.description}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { FormRow } from "../../components";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { useDashboardContext } from "../Dashboard/Dashboard";
+import { backgroundImage } from "../../constants/ImageConstant";
 
 const AddRoute = () => {
   const { data, firstName, lastName, email, phoneNumber } =

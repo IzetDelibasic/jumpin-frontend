@@ -8,11 +8,11 @@ export const Links = [
     href: "/dashboard/add-route",
   },
   {
-    title: "Profile",
-    href: "/dashboard/profile",
-  },
-  {
     title: "Requests",
     href: "/dashboard/requests",
+  },
+  {
+    title: "Profile",
+    href: "/dashboard/profile",
   },
 ];

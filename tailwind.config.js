@@ -9,6 +9,10 @@ export default {
         about: "Work Sans",
         montserrat: "Montserrat",
       },
+      colors: {
+        backgroundColor: "#E6F2F9",
+        blueColor: "#0A4298",
+      },
     },
   },
   plugins: [],

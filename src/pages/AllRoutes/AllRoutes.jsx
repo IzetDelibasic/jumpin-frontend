@@ -62,7 +62,7 @@ const AllRoutes = () => {
 
   return (
     <div>
-      <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blue-500 w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
+      <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blueColor w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
         Find Your Destination - Jumpin Routes
       </h1>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 font-montserrat mx-auto p-4">
@@ -94,7 +94,7 @@ const AllRoutes = () => {
                 <p>Description: {item.route.description}</p>
                 <button
                   onClick={() => handleButtonClick(item.route, item.user)}
-                  className="bg-blue-500 text-white font-medium py-2 px-4 mt-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+                  className="bg-blueColor text-white font-medium py-2 px-4 mt-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
                 >
                   Send Request
                 </button>

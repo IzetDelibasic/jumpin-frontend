@@ -38,13 +38,11 @@ const Dashboard = () => {
         phoneNumber,
       }}
     >
-      <div className="bg-gray-200 min-h-screen flex flex-col">
+      <div className="bg-backgroundColor min-h-screen flex flex-col">
         <Navbar />
-        <div className="">
-          <Outlet
-            context={{ firstName, lastName, email, phoneNumber, userToken }}
-          />
-        </div>
+        <Outlet
+          context={{ firstName, lastName, email, phoneNumber, userToken }}
+        />
       </div>
     </DashboardContext.Provider>
   );

@@ -3,12 +3,13 @@ import { FaLocationArrow } from "react-icons/fa";
 import { useDashboardContext } from "../../pages/Dashboard/Dashboard";
 import { Links } from "../../constants/LinksConstant";
 import { useNavigate } from "react-router-dom";
+import { MdLogout } from "react-icons/md";
 
 const Navbar = () => {
   const { firstName, lastName, email, phoneNumber } = useDashboardContext();
   const navigate = useNavigate();
   return (
-    <div className="bg-blue-500 border-b-2 border-black border-opacity-20 font-montserrat">
+    <div className="bg-blueColor border-b-2 border-black border-opacity-20 font-montserrat">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a
           href="/dashboard"
@@ -31,18 +32,13 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-            <li>
-              <a className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bluePurple md:p-0">
-                {firstName} {lastName}
-              </a>
-            </li>
             <button
               onClick={() => {
                 localStorage.removeItem("jwtToken");
                 window.location.href = "/";
               }}
             >
-              Logout
+              <MdLogout className="text-white" />
             </button>
           </ul>
         </div>
