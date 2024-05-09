@@ -27,10 +27,10 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="my-4 bg-blue-400 w-[85%] text-black text-center mx-auto font-montserrat p-4 rounded-md shadow-2xl flex">
+      <div className="my-4 bg-blue-400 w-[85%] text-black text-center mx-auto font-montserrat p-4 rounded-md shadow-2xl flex flex-col sm:flex-row">
         <div className="flex flex-col mx-auto">
           <h2 className="text-xl font-semibold mb-4">User Profile</h2>
-          <div className="text-sky-900 flex items-center justify-center">
+          <div className="text-blueColor flex items-center justify-center">
             <FaUserCircle size={100} />
           </div>
         </div>
@@ -50,31 +50,36 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="bg-white w-[85%] mx-auto my-4 font-montserrat p-2 rounded-md">
+      <div className=" bg-opacity-85 w-[85%] mx-auto my-4 font-montserrat p-2 rounded-md">
         <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
           User Routes
         </h2>
-        {userRoutes.map((route, index) => (
-          <div key={index}>
-            <div>Route number: {index + 1}</div>
-            <div className="border rounded-lg flex flex-col p-4 mb-4">
-              <div className="font-medium">{route.name}</div>
-              <div className="font-normal">
-                Seats Number: {route.seatsNumber}
-              </div>
-              <div className="font-normal">
-                Date and Time:{" "}
-                {new Date(route.dateAndTime).toLocaleDateString("en-GB") +
-                  " " +
-                  new Date(route.dateAndTime).toLocaleTimeString()}
-              </div>
-              <div className="font-normal">Price: {route.price}</div>
-              <div className="font-normal">
-                Description: {route.description}
+        <div className="grid sm:grid-cols-2 grid-cols-1">
+          {userRoutes.map((route, index) => (
+            <div
+              key={index}
+              className="bg-blue-400 p-4 rounded-md shadow-2x text-center sm:w-[95%] mb-4 sm:mb-0 mx-auto"
+            >
+              <div className="font-medium text-[18px]">Route {index + 1}</div>
+              <div className="border border-black rounded-lg flex flex-col p-4 mb-4">
+                <div className="font-medium text-[18px]">{route.name}</div>
+                <div className="font-normal">Price: {route.price}</div>
+                <div className="font-normal">
+                  Seats Number: {route.seatsNumber}
+                </div>
+                <div className="font-normal">
+                  Date and Time:{" "}
+                  {new Date(route.dateAndTime).toLocaleDateString("en-GB") +
+                    " " +
+                    new Date(route.dateAndTime).toLocaleTimeString()}
+                </div>
+                <div className="font-normal">
+                  Description: {route.description}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
