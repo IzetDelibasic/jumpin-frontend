@@ -85,7 +85,7 @@ const Register = () => {
           Jumpin
         </div>
       </div>
-      <div className="bg-white bg-opacity-80 xl:w-[25%] p-8 rounded-[10px] rounded-bl-none flex flex-col items-center">
+      <div className="bg-white bg-opacity-80 xl:w-[25%] w-[97%] sm:w-[50%] md:w-[40%] p-8 rounded-[10px] rounded-bl-none flex flex-col items-center">
         <h1 className="text-2xl font-bold text-bluePurple uppercase mb-4 text-center font-montserrat">
           Register
         </h1>

@@ -10,9 +10,9 @@ const LandingAction = () => {
     <div className="flex flex-col items-center justify-center sm:flex-row md:justify-center md:w-[30rem] lg:w-full w-[90%] mx-auto md:mx-0">
       <Link href="">
         <CustomButton
-          className="relative bg-blue-500 text-white font-medium lg:py-[1.2rem] py-[1rem] lg:px-[2.5rem] px-[2.5rem] md:px-[1.5rem] mr-0 mb-[20px] sm:mb-0 rounded-[3rem] group overflow-hidden z-[1]"
+          className="relative bg-blue-500 text-white font-medium py-[1rem] lg:px-[2.5rem] px-[2.5rem] md:px-[1.5rem] mr-0 mb-[20px] sm:mb-0 rounded-[3rem] group overflow-hidden z-[1] text-nowrap"
           iconClassName="group-hover:text-white ml-[10px]"
-          title="Register"
+          title="Start Journey"
           titleClassName="group-hover:text-white font-subtitle"
           href="/register"
           Icon={IoArrowForwardSharp}
@@ -21,9 +21,9 @@ const LandingAction = () => {
         </CustomButton>
       </Link>
       <CustomButton
-        className="relative bg-blue-500 text-white font-medium lg:py-[1.2rem] py-[1rem] lg:px-[2rem] px-[4rem] md:px-[1.5rem] rounded-[3rem] group overflow-hidden z-[1] sm:ml-[20px] hover:border-opacity-0 hover:border-transparent"
+        className="relative bg-blue-500 text-white font-medium py-[1rem] lg:px-[2.5rem] px-[2.5rem] md:px-[1.5rem] rounded-[3rem] group overflow-hidden z-[1] sm:ml-[20px] hover:border-opacity-0 hover:border-transparent text-nowrap"
         iconClassName=""
-        title="Login"
+        title="Search Your Way"
         titleClassName="group-hover:text-white font-subtitle"
         href="/login"
       >

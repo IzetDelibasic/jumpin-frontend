@@ -57,7 +57,7 @@ const AddRoute = () => {
 
   return (
     <div>
-      <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blue-500 w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
+      <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blueColor w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
         Are you going somewhere? Add a route!
       </h1>
       <Form
@@ -65,10 +65,10 @@ const AddRoute = () => {
         className="flex flex-col items-center bg-white w-[70%] mx-auto mt-10 font-montserrat px-4 py-10 rounded-md shadow-2xl"
         onSubmit={handleSubmit}
       >
-        <div className="mb-4 ">
+        <div className="flex flex-col items-start mx-auto">
           <label
             htmlFor="dateAndTime"
-            className="block text-sm font-medium text-gray-700"
+            className="text-sm font-medium text-gray-700 mx-auto"
           >
             Date and Time
           </label>
@@ -81,6 +81,7 @@ const AddRoute = () => {
             timeIntervals={15}
             timeCaption="time"
             dateFormat="d MMMM, yyyy h:mm aa"
+            className="text-center"
           />
         </div>
         <FormRow
@@ -112,7 +113,7 @@ const AddRoute = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <button
-          className="relative bg-blue-500 text-white font-medium py-[1rem] px-[3.5rem] md:px-[4rem] lg:px-[5rem] mr-0 mb-[20px] md:mb-0 rounded-[3rem] group overflow-hidden z-[1]"
+          className="relative bg-blue-500 text-white font-medium py-[0.5rem] px-[1.5rem] md:px-[3rem] lg:px-[4rem] mr-0 mb-[20px] md:mb-0 rounded-[3rem] group overflow-hidden z-[1] text-nowrap"
           type="submit"
         >
           <div className="">Submit Route</div>

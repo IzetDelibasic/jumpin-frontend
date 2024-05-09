@@ -18,14 +18,14 @@ const Landing = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="flex items-center justify-center md:justify-start md:pl-10 pt-10 mb-10 cursor-default mx-auto">
+      <div className="flex items-center justify-center md:justify-start md:pl-10 pt-10 mb-10 lg:mb-4 xl:mb-8 cursor-default mx-auto">
         <img src={logoImage} alt="Logo" className="w-[48px] h-[48px]" />
         <div className="text-3xl font-montserrat pl-[0.5rem] text-blue-500">
           Jumpin
         </div>
       </div>
-      <div className="flex items-center justify-center lg:mt-[6rem] mt-2 lg:pt-[2rem] font-montserrat bg-white bg-opacity-75 xl:w-[70%] md:w-[70%] w-[95%] mx-auto rounded-xl">
-        <div className="max-w-screen-lg flex lg:flex-row lg:justify-between flex-col-reverse sm:flex-col justify-center mx-auto px-6 lg:py-12 py-6 items-center text-center">
+      <div className="flex items-center justify-center xl:mt-[6rem] mt-2 xl:pt-[2rem] font-montserrat bg-white bg-opacity-75 xl:w-[70%] md:w-[70%] w-[95%] mx-auto rounded-xl">
+        <div className="max-w-screen-lg flex xl:flex-row xl:justify-between flex-col-reverse sm:flex-col justify-center mx-auto px-6 xl:py-12 py-6 lg:py-2 items-center text-center">
           <div className="flex flex-col items-center lg:w-[60%] w-[90%] sm:mb-10 lg:mb-0">
             <h1 className="md:text-3xl text-xl font-bold mb-4">
               Welcome to <span className="text-blue-500">Jumpin</span>
@@ -39,7 +39,7 @@ const Landing = () => {
             </p>
             <LandingAction />
           </div>
-          <div className="flex lg:justify-end justify-center mb-4">
+          <div className="flex xl:justify-end justify-center my-4">
             <img
               src={landingImage}
               alt="LandingImage"

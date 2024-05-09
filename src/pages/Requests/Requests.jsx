@@ -8,6 +8,8 @@ const Requests = () => {
     useDashboardContext();
   const [userRequests, setUserRequests] = useState([]);
   const [userRecievedRequests, setUserRecievedRequests] = useState([]);
+  console.log(userRecievedRequests);
+  console.log(userRequests);
   useEffect(() => {
     const getUserSentRequests = async () => {
       const token = localStorage.getItem("jwtToken");
@@ -132,6 +134,7 @@ const Requests = () => {
               <div className="font-normal">
                 Description: {request.description}
               </div>
+              <div className="font-normal">Status: {request.status}</div>
             </div>
           </div>
         ))}
