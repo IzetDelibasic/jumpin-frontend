@@ -62,7 +62,7 @@ const AddRoute = () => {
       </h1>
       <Form
         method="post"
-        className="flex flex-col items-center bg-white w-[70%] mx-auto mt-10 font-montserrat px-4 py-10 rounded-md shadow-2xl"
+        className="flex flex-col items-center bg-white lg:w-[50%] sm:w-[70%] w-[85%] mx-auto mt-10 font-montserrat px-4 py-10 rounded-[3rem] shadow-2xl"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col items-start mx-auto">
@@ -80,7 +80,7 @@ const AddRoute = () => {
             timeFormat="HH:mm"
             timeIntervals={15}
             timeCaption="time"
-            dateFormat="d MMMM, yyyy h:mm aa"
+            dateFormat="d MMMM, h:mm aa"
             className="text-center"
           />
         </div>
@@ -116,7 +116,7 @@ const AddRoute = () => {
           className="relative bg-blue-500 text-white font-medium py-[0.5rem] px-[1.5rem] md:px-[3rem] lg:px-[4rem] mr-0 mb-[20px] md:mb-0 rounded-[3rem] group overflow-hidden z-[1] text-nowrap"
           type="submit"
         >
-          <div className="">Submit Route</div>
+          <div className="">Submit</div>
           <div className="absolute inset-0 bg-black w-full transform origin-right transition-transform duration-300 group-hover:scale-x-0 z-[-1]"></div>
         </button>
       </Form>

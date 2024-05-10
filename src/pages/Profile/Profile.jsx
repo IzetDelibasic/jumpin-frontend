@@ -27,7 +27,7 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="my-4 bg-blue-400 w-[85%] text-black text-center mx-auto font-montserrat p-4 rounded-md shadow-2xl flex flex-col sm:flex-row">
+      <div className="my-4 bg-white w-[85%] text-black text-center mx-auto font-montserrat p-4 rounded-md shadow-2xl flex flex-col sm:flex-row">
         <div className="flex flex-col mx-auto">
           <h2 className="text-xl font-semibold mb-4">User Profile</h2>
           <div className="text-blueColor flex items-center justify-center">
@@ -58,7 +58,7 @@ const Profile = () => {
           {userRoutes.map((route, index) => (
             <div
               key={index}
-              className="bg-blue-400 p-4 rounded-md shadow-2x text-center sm:w-[95%] mb-4 sm:mb-0 mx-auto"
+              className="bg-white p-4 rounded-md shadow-2x text-center sm:w-[95%] mb-4 sm:mb-0 mx-auto"
             >
               <div className="font-medium text-[18px]">Route {index + 1}</div>
               <div className="border border-black rounded-lg flex flex-col p-4 mb-4">

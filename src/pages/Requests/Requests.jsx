@@ -89,7 +89,6 @@ const Requests = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      // If request processed successfully, update the state
       const updatedRequests = [...userRecievedRequests];
       updatedRequests.splice(index, 1);
       setUserRecievedRequests(updatedRequests);
@@ -101,15 +100,15 @@ const Requests = () => {
   };
 
   return (
-    <div className="bg-blue-400 w-[90%] mx-auto p-8 my-4 font-montserrat rounded-md flex flex-col md:flex-row justify-between">
-      <div className="text-center w-[45%]">
+    <div className="bg-blue-400 bg-opacity-70 w-[90%] mx-auto p-8 my-4 font-montserrat rounded-md flex flex-col md:flex-row justify-between">
+      <div className="text-center md:w-[45%]">
         <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
           User Requests
         </h2>
         {userRequests.map((request, index) => (
           <div key={index}>
             <div>Route {index + 1}</div>
-            <div className="border rounded-lg flex flex-col p-4 mb-4 bg-backgroundColor">
+            <div className="border rounded-lg flex flex-col items-center justify-center p-4 mb-4 bg-backgroundColor md:h-[15rem]">
               <div className="font-medium">{request.userRoute.route.name}</div>
               <div>
                 Driver: {request.userRoute.user.firstName}{" "}
@@ -139,15 +138,21 @@ const Requests = () => {
           </div>
         ))}
       </div>
-      <div className="text-center w-[45%]">
+      <div className="text-center md:w-[45%]">
         <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
           Recieved Requests
         </h2>
         {userRecievedRequests.map((request, index) => (
           <div key={index}>
             <div>Route number: {index + 1}</div>
-            <div className="border rounded-lg flex flex-col p-4 mb-4 bg-backgroundColor">
+            <div className="border rounded-lg flex flex-col items-center justify-center p-4 mb-4 bg-backgroundColor md:h-[15rem]">
               <div className="font-medium">{request.name}</div>
+              <div className="font-normal">
+                Route: {request.userRoute.route.name}
+              </div>
+              <div className="font-normal">
+                Passenger: {request.passengerEmail}
+              </div>
               <div className="font-normal">
                 Seats Number: {request.userRoute.route.seatsNumber}
               </div>
@@ -167,16 +172,16 @@ const Requests = () => {
               <div className="font-normal">
                 Description: {request.description}
               </div>
-              <div className="mt-4 flex justify-between w-[30%] mx-auto">
+              <div className="mt-4 flex flex-col sm:flex-row justify-center items-center">
                 <button
                   onClick={() => acceptRequest(index)}
-                  className="bg-gray-900 hover:bg-green-600 duration-300 ease-in-out text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                  className="bg-gray-900 hover:bg-green-600 duration-300 ease-in-out text-white font-medium py-2 px-4 sm:mr-2 mb-2 sm:mb-0 rounded-xl focus:outline-none focus:shadow-outline"
                 >
                   Accept
                 </button>
                 <button
                   onClick={() => declineRequest(index)}
-                  className="bg-gray-900 hover:bg-red-600 duration-300 ease-in-out text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                  className="bg-gray-900 hover:bg-red-600 duration-300 ease-in-out text-white font-medium py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
                 >
                   Decline
                 </button>

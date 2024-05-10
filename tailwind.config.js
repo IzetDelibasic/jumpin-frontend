@@ -8,6 +8,7 @@ export default {
         title: "Bebas Neue",
         about: "Work Sans",
         montserrat: "Montserrat",
+        cabin: "Cabin",
       },
       colors: {
         backgroundColor: "#E6F2F9",

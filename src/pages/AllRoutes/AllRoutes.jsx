@@ -65,40 +65,66 @@ const AllRoutes = () => {
       <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blueColor w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
         Find Your Destination - Jumpin Routes
       </h1>
-      <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 font-montserrat mx-auto p-4">
+      <div className="grid grid-cols-1 font-cabin mx-auto p-4">
         {data.length > 0 ? (
           data.map((item, index) => (
             <div
-              className="bg-white rounded-lg shadow-md p-6 mb-4 lg:mr-4 text-center lg:w-[95%] w-[90%] mx-auto"
+              className="bg-white rounded-lg shadow-md p-6 mb-4 lg:mr-4 text-center lg:w-[95%] w-[90%] mx-auto border-[1px] border-opacity-25 border-black hover:border-blueColor ease-in-out duration-300"
               key={index}
             >
               <div className="mb-4">
-                <h2 className="text-xl font-bold">
-                  {item.user.firstName} {item.user.lastName}
-                </h2>
-                <p className="text-gray-600">{item.user.email}</p>
-                <p className="text-gray-600">{item.user.phoneNumber}</p>
+                <div className="flex sm:flex-row flex-col justify-between border-b-2">
+                  <h2 className="text-xl font-bold">
+                    {item.user.firstName} {item.user.lastName}
+                  </h2>
+                  <p className="text-gray-600">
+                    Kontakt: {item.user.phoneNumber}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold mb-2">{item.route.name}</h3>
-                <p>Seats: {item.route.seatsNumber}</p>
-                <p>
-                  Date & Time:{" "}
-                  {new Date(item.route.dateAndTime).toLocaleDateString(
-                    "en-GB"
-                  ) +
-                    " " +
-                    new Date(item.route.dateAndTime).toLocaleTimeString()}
-                </p>
-                <p>Price: {item.route.price}</p>
-                <p>Description: {item.route.description}</p>
-                <button
-                  onClick={() => handleButtonClick(item.route, item.user)}
-                  className="bg-blueColor text-white font-medium py-2 px-4 mt-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
-                >
-                  Send Request
-                </button>
+              <div className="border-b-2">
+                <h3 className="text-lg font-medium mb-2 md:text-[2.5rem] text-[1.8rem]">
+                  {item.route.name}
+                </h3>
+                <div className="flex sm:flex-row justify-between items-center mb-2">
+                  <div className="flex flex-col">
+                    <div className="flex">
+                      <p className="font-semibold mr-1">Seats:</p>
+                      <p>{item.route.seatsNumber}</p>
+                    </div>
+                    <p className="sm:text-[2rem] text-lime-500">
+                      {item.route.price}$
+                    </p>
+                  </div>
+                  <div className="flex flex-col text-lime-500 sm:text-[1.5rem]">
+                    <p>
+                      {new Date(item.route.dateAndTime).toLocaleDateString(
+                        "en-GB",
+                        {
+                          day: "numeric",
+                          month: "long",
+                        }
+                      )}
+                    </p>
+                    <p>
+                      {new Date(item.route.dateAndTime).toLocaleTimeString(
+                        "en-GB",
+                        {
+                          hour: "numeric",
+                          minute: "numeric",
+                        }
+                      )}
+                    </p>
+                  </div>
+                </div>
+                <p className="sm:text-[1.2rem]">{item.route.description}</p>
               </div>
+              <button
+                onClick={() => handleButtonClick(item.route, item.user)}
+                className="bg-blueColor text-white font-medium py-2 px-10 mt-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+              >
+                Send Request
+              </button>
             </div>
           ))
         ) : (
