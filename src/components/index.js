@@ -1,3 +1,5 @@
+export { default as Ads } from "./Ads/Ads";
+
 export { default as CustomButton } from "./CustomButton/CustomButton";
 
 export { default as FormRow } from "./FormRow/FormRow";
