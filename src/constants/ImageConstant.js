@@ -4,6 +4,8 @@ export const logoImage = "./images/favicon.ico";
 
 export const landingImage = "./images/landingMap.jpg";
 
+export const profileBackground = "./images/profileBackground.jpg";
+
 export const testLogoOne = "./images/testLogoOne.png";
 
 export const testLogoTwo = "./images/testLogoTwo.png";

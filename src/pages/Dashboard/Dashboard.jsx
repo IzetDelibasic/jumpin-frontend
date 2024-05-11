@@ -38,7 +38,7 @@ const Dashboard = () => {
         phoneNumber,
       }}
     >
-      <div className="bg-backgroundColor min-h-screen flex flex-col">
+      <div className="bg-gray-50 min-h-screen flex flex-col">
         <Navbar />
         <Ads />
         <Outlet

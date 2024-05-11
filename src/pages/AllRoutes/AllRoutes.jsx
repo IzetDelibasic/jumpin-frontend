@@ -125,7 +125,7 @@ const AllRoutes = () => {
                   </div>
                   <button
                     onClick={() => handleButtonClick(item.route, item.user)}
-                    className="bg-blueColor text-white font-medium py-2 px-10 mt-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+                    className="bg-blueColor text-white font-medium py-2 px-10 mt-4 rounded-lg hover:bg-lightBlue transition duration-300 ease-in-out"
                   >
                     Send Request
                   </button>

@@ -24,7 +24,7 @@ const Ads = () => {
   }, [ads]);
 
   return (
-    <div className="relative overflow-hidden bg-white border-b-2 border-black bg-opacity-50 p-10">
+    <div className="relative overflow-hidden bg-gray-200 border-b-[1px] border-black bg-opacity-50 p-10">
       <div
         className="absolute top-0 left-0 w-full h-full flex transition-transform duration-1000"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

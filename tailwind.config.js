@@ -12,7 +12,8 @@ export default {
       },
       colors: {
         backgroundColor: "#E6F2F9",
-        blueColor: "#150578",
+        blueColor: "#003459",
+        lightBlue: "#007ea7",
         greenColor: "#32CD32",
         lightGreen: "#50C878",
       },

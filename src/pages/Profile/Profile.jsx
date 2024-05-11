@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDashboardContext } from "../Dashboard/Dashboard";
 import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
+import { profileBackground } from "../../constants/ImageConstant";
 
 const Profile = () => {
   const { data, firstName, lastName, email, phoneNumber, userToken } =
     useDashboardContext();
   const [userRoutes, setUserRoutes] = useState([]);
+  const [numberOfRoutes, setNumberOfRoutes] = useState(0);
 
   useEffect(() => {
     const getUserRoutes = async () => {
@@ -20,6 +22,7 @@ const Profile = () => {
         }
       );
       setUserRoutes(response.data);
+      setNumberOfRoutes(response.data.length);
     };
 
     getUserRoutes();
@@ -27,56 +30,67 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="my-4 bg-white w-[85%] text-black text-center mx-auto font-montserrat p-4 rounded-md shadow-2xl flex flex-col sm:flex-row">
-        <div className="flex flex-col mx-auto">
-          <h2 className="text-xl font-semibold mb-4">User Profile</h2>
-          <div className="text-blueColor flex items-center justify-center">
-            <FaUserCircle size={100} />
-          </div>
+      <div className="my-4 bg-white w-[90%] md:w-[60%] text-black text-center border-[1px] border-gray-300 mx-auto font-montserrat p-4 rounded-md shadow-2xl flex flex-col">
+        <div className="flex items-center justify-center bg-blueColor mb-2 text-white">
+          <div className="font-medium mr-1">{firstName}</div>
+          <div className="font-medium mr-1">{lastName}</div>
         </div>
-        <div className="flex flex-col justify-center items-center mx-auto">
-          <div className="flex items-center justify-center">
-            <div className="font-medium mr-1">First Name:</div> {firstName}
+        <div className="flex flex-col sm:flex-row">
+          <div className="flex flex-col mx-auto">
+            <div className="text-blueColor flex items-center justify-center">
+              <FaUserCircle size={100} />
+            </div>
           </div>
-          <div className="flex items-center justify-center">
-            <div className="font-medium mr-1">Last Name:</div> {lastName}
-          </div>
-          <div className="flex items-center justify-center">
-            <div className="font-medium mr-1">Email:</div> {email}
-          </div>
-          <div className="flex sm:flex-row flex-col items-center justify-center">
-            <div className="font-medium mr-1">Phone Number:</div> {phoneNumber}
+          <div className="flex flex-col justify-center items-center mx-auto">
+            <div>Number of routes: {numberOfRoutes}</div>
+            <div className="font-medium mr-1">{email}</div>
+            <div className="font-medium mr-1"> {phoneNumber}</div>
           </div>
         </div>
       </div>
 
-      <div className=" bg-opacity-85 w-[85%] mx-auto my-4 font-montserrat p-2 rounded-md">
+      <div className="my-4 p-2 font-cabin">
         <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
           User Routes
         </h2>
-        <div className="grid sm:grid-cols-2 grid-cols-1">
+        <div className="grid sm:grid-cols-1 grid-cols-1">
           {userRoutes.map((route, index) => (
             <div
               key={index}
-              className="bg-white p-4 rounded-md shadow-2x text-center sm:w-[95%] mb-4 sm:mb-0 mx-auto"
+              className="bg-white rounded-lg shadow-md p-6 mb-4 lg:mr-4 text-center lg:w-[95%] w-[90%] mx-auto border-[1px] border-opacity-25 border-black hover:border-blueColor ease-in-out duration-300"
             >
-              <div className="font-medium text-[18px]">Route {index + 1}</div>
-              <div className="border border-black rounded-lg flex flex-col p-4 mb-4">
-                <div className="font-medium text-[18px]">{route.name}</div>
-                <div className="font-normal">Price: {route.price}</div>
-                <div className="font-normal">
-                  Seats Number: {route.seatsNumber}
+              <div className="font-medium text-[18px] mb-2">
+                Route {index + 1}
+              </div>
+              <h3 className="text-lg font-medium mb-2 md:text-[2.5rem] text-[1.8rem]">
+                {route.name}
+              </h3>
+              <div className="flex sm:flex-row justify-between items-center mb-2">
+                <div className="flex flex-col">
+                  <div className="flex">
+                    <p className="font-semibold mr-1">Seats:</p>
+                    <p className="text-greenColor">{route.seatsNumber}</p>
+                  </div>
+                  <p className="sm:text-[2rem] text-greenColor">
+                    {route.price}$
+                  </p>
                 </div>
-                <div className="font-normal">
-                  Date and Time:{" "}
-                  {new Date(route.dateAndTime).toLocaleDateString("en-GB") +
-                    " " +
-                    new Date(route.dateAndTime).toLocaleTimeString()}
-                </div>
-                <div className="font-normal">
-                  Description: {route.description}
+                <div className="flex flex-col text-greenColor sm:text-[1.5rem]">
+                  <p>
+                    {new Date(route.dateAndTime).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "long",
+                    })}
+                  </p>
+                  <p>
+                    {new Date(route.dateAndTime).toLocaleTimeString("en-GB", {
+                      hour: "numeric",
+                      minute: "numeric",
+                    })}
+                  </p>
                 </div>
               </div>
+              <p className="sm:text-[1.2rem]">{route.description}</p>
             </div>
           ))}
         </div>
