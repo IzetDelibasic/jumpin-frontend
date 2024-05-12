@@ -23,32 +23,35 @@ const AddRoute = () => {
     event.preventDefault();
     try {
       const token = localStorage.getItem("jwtToken");
-      console.log(token);
-      const response = await axios.post(
-        "https://localhost:7065/api/Route/AddRoute",
-        {
-          user: {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phoneNumber: phoneNumber,
+      if (seatsNumber >= 1 && seatsNumber <= 10) {
+        const response = await axios.post(
+          "https://localhost:7065/api/Route/AddRoute",
+          {
+            user: {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              phoneNumber: phoneNumber,
+            },
+            route: {
+              name: routeName,
+              seatsNumber: parseInt(seatsNumber),
+              dateAndTime: dateAndTime.toISOString(),
+              price: parseFloat(price),
+              description: description,
+            },
           },
-          route: {
-            name: routeName,
-            seatsNumber: parseInt(seatsNumber),
-            dateAndTime: dateAndTime.toISOString(),
-            price: parseFloat(price),
-            description: description,
-          },
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
-      console.log(response.data);
-      toast.success("Route added successfully!");
-      navigate("/dashboard");
+        console.log(response.data);
+        toast.success("Route added successfully!");
+        navigate("/dashboard");
+      } else {
+        toast.error("Seats number must be between 1 and 10.");
+      }
     } catch (error) {
       toast.error("An error with adding route occurred");
       return error;

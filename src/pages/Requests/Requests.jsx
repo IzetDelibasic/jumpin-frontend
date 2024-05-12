@@ -145,9 +145,7 @@ const Requests = () => {
                     </p>
                   </div>
                 </div>
-                <div className="font-normal md:text-[1.5rem]">
-                  {request.description}
-                </div>
+                <div className="font-normal">Note: {request.description}</div>
                 <div className="mt-4 flex flex-col sm:flex-row justify-center items-center">
                   <button
                     onClick={() => acceptRequest(index)}
@@ -214,9 +212,7 @@ const Requests = () => {
                     </p>
                   </div>
                 </div>
-                <div className="font-normal">
-                  Description: {request.description}
-                </div>
+                <div className="font-normal">Note: {request.description}</div>
                 <div
                   className={`font-normal text-[1.2rem] ${
                     request.status === "Accepted"
