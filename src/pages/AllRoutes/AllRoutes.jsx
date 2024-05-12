@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDashboardContext } from "../Dashboard/Dashboard";
+import { Ads } from "../../components";
 
 const AllRoutes = () => {
   const { data, firstName, lastName, email, phoneNumber } =
@@ -62,6 +63,7 @@ const AllRoutes = () => {
 
   return (
     <div>
+      <Ads />
       <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blueColor w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
         Find Your Destination - Jumpin Routes
       </h1>

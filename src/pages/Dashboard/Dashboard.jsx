@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { Navbar, Ads } from "../../components";
+import { Navbar } from "../../components";
 import { Outlet } from "react-router-dom";
 
 export const DashboardContext = createContext();
@@ -40,7 +40,6 @@ const Dashboard = () => {
     >
       <div className="bg-gray-50 min-h-screen flex flex-col">
         <Navbar />
-        <Ads />
         <Outlet
           context={{ firstName, lastName, email, phoneNumber, userToken }}
         />

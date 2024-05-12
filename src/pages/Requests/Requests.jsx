@@ -100,95 +100,136 @@ const Requests = () => {
   };
 
   return (
-    <div className="bg-blue-400 bg-opacity-70 w-[90%] mx-auto p-8 my-4 font-montserrat rounded-md flex flex-col md:flex-row justify-between">
-      <div className="text-center md:w-[45%]">
-        <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
-          User Requests
-        </h2>
-        {userRequests.map((request, index) => (
-          <div key={index}>
-            <div>Route {index + 1}</div>
-            <div className="border rounded-lg flex flex-col items-center justify-center p-4 mb-4 bg-backgroundColor md:h-[15rem]">
-              <div className="font-medium">{request.userRoute.route.name}</div>
-              <div>
-                Driver: {request.userRoute.user.firstName}{" "}
-                {request.userRoute.user.lastName}
+    <div className="bg-gray-100">
+      <div className="w-[90%] mx-auto p-8 my-4 rounded-md flex flex-col justify-between font-cabin">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold mt-8 mb-4 ">
+            Recieved Requests
+          </h2>
+          {userRecievedRequests.map((request, index) => (
+            <div key={index}>
+              <div className="py-2">Route number: {index + 1}</div>
+              <div className="rounded-lg flex flex-col sm:p-6 p-2 mb-4 bg-gray-100 shadow-2xl border-[1px] border-opacity-25 border-black hover:border-blueColor duration-300 ease-in-out">
+                <div className="font-medium md:text-[2rem] border-b-[1px] border-blueColor md:w-[40%] mx-auto">
+                  {request.userRoute.route.name}
+                </div>
+                <div>Passenger: {request.passengerEmail}</div>
+                <div className="flex flex-col sm:flex-row justify-between items-center mb-2">
+                  <div className="flex flex-col">
+                    <div className="flex">
+                      <p className="font-semibold mr-1">Seats:</p>
+                      <p className="text-greenColor">
+                        {request.userRoute.route.seatsNumber}
+                      </p>
+                    </div>
+                    <p className="sm:text-[2rem] text-greenColor">
+                      {request.userRoute.route.price}$
+                    </p>
+                  </div>
+                  <div className="flex flex-row sm:flex-col text-greenColor sm:text-[1.5rem]">
+                    <p className="mr-2 sm:mr-0">
+                      {new Date(
+                        request.userRoute.route.dateAndTime
+                      ).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                      })}
+                    </p>
+                    <p>
+                      {new Date(
+                        request.userRoute.route.dateAndTime
+                      ).toLocaleTimeString("en-GB", {
+                        hour: "numeric",
+                        minute: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </div>
+                <div className="font-normal md:text-[1.5rem]">
+                  {request.description}
+                </div>
+                <div className="mt-4 flex flex-col sm:flex-row justify-center items-center">
+                  <button
+                    onClick={() => acceptRequest(index)}
+                    className="bg-gray-900 hover:bg-green-600 duration-300 w-[60%] sm:w-[15%] ease-in-out text-white font-medium py-2 px-4 sm:mr-2 mb-2 sm:mb-0 rounded-xl focus:outline-none focus:shadow-outline"
+                  >
+                    Accept
+                  </button>
+                  <button
+                    onClick={() => declineRequest(index)}
+                    className="bg-gray-900 hover:bg-red-600 duration-300 w-[60%] sm:w-[15%] ease-in-out text-white font-medium py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                  >
+                    Decline
+                  </button>
+                </div>
               </div>
-              <div className="font-normal">
-                Seats Number: {request.userRoute.route.seatsNumber}
-              </div>
-              <div className="font-normal">
-                Date and Time:{" "}
-                {new Date(
-                  request.userRoute.route.dateAndTime
-                ).toLocaleDateString("en-GB") +
-                  " " +
-                  new Date(
-                    request.userRoute.route.dateAndTime
-                  ).toLocaleTimeString()}
-              </div>
-              <div className="font-normal">
-                Price: {request.userRoute.route.price}
-              </div>
-              <div className="font-normal">
-                Description: {request.description}
-              </div>
-              <div className="font-normal">Status: {request.status}</div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <div className="text-center md:w-[45%]">
-        <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
-          Recieved Requests
-        </h2>
-        {userRecievedRequests.map((request, index) => (
-          <div key={index}>
-            <div>Route number: {index + 1}</div>
-            <div className="border rounded-lg flex flex-col items-center justify-center p-4 mb-4 bg-backgroundColor md:h-[15rem]">
-              <div className="font-medium">{request.name}</div>
-              <div className="font-normal">
-                Route: {request.userRoute.route.name}
-              </div>
-              <div className="font-normal">
-                Passenger: {request.passengerEmail}
-              </div>
-              <div className="font-normal">
-                Seats Number: {request.userRoute.route.seatsNumber}
-              </div>
-              <div className="font-normal">
-                Date and Time:{" "}
-                {new Date(
-                  request.userRoute.route.dateAndTime
-                ).toLocaleDateString("en-GB") +
-                  " " +
-                  new Date(
-                    request.userRoute.route.dateAndTime
-                  ).toLocaleTimeString()}
-              </div>
-              <div className="font-normal">
-                Price: {request.userRoute.route.price}
-              </div>
-              <div className="font-normal">
-                Description: {request.description}
-              </div>
-              <div className="mt-4 flex flex-col sm:flex-row justify-center items-center">
-                <button
-                  onClick={() => acceptRequest(index)}
-                  className="bg-gray-900 hover:bg-green-600 duration-300 ease-in-out text-white font-medium py-2 px-4 sm:mr-2 mb-2 sm:mb-0 rounded-xl focus:outline-none focus:shadow-outline"
+      <div className="w-[90%] mx-auto p-8 my-4 rounded-md flex flex-col justify-between font-cabin">
+        <div className="text-center ">
+          <h2 className="text-xl font-semibold mt-8 mb-4 text-center">
+            User Requests
+          </h2>
+          {userRequests.map((request, index) => (
+            <div key={index}>
+              <div>Route {index + 1}</div>
+              <div className="rounded-lg flex flex-col sm:p-6 p-2 mb-4 bg-gray-100 shadow-2xl border-[1px] border-opacity-25 border-black hover:border-blueColor duration-300 ease-in-out">
+                <div className="font-medium md:text-[2rem] border-b-[1px] border-blueColor md:w-[40%] mx-auto">
+                  {request.userRoute.route.name}
+                </div>
+                <div>
+                  Driver: {request.userRoute.user.firstName}{" "}
+                  {request.userRoute.user.lastName}
+                </div>
+                <div className="flex flex-col sm:flex-row justify-between items-center mb-2">
+                  <div className="flex flex-col">
+                    <div className="flex">
+                      <p className="font-semibold mr-1">Seats:</p>
+                      <p className="text-greenColor">
+                        {request.userRoute.route.seatsNumber}
+                      </p>
+                    </div>
+                    <p className="sm:text-[2rem] text-greenColor">
+                      {request.userRoute.route.price}$
+                    </p>
+                  </div>
+                  <div className="flex flex-row sm:flex-col text-greenColor sm:text-[1.5rem]">
+                    <p className="mr-2 sm:mr-0">
+                      {new Date(
+                        request.userRoute.route.dateAndTime
+                      ).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                      })}
+                    </p>
+                    <p>
+                      {new Date(
+                        request.userRoute.route.dateAndTime
+                      ).toLocaleTimeString("en-GB", {
+                        hour: "numeric",
+                        minute: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </div>
+                <div className="font-normal">
+                  Description: {request.description}
+                </div>
+                <div
+                  className={`font-normal text-[1.2rem] ${
+                    request.status === "Accepted"
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
                 >
-                  Accept
-                </button>
-                <button
-                  onClick={() => declineRequest(index)}
-                  className="bg-gray-900 hover:bg-red-600 duration-300 ease-in-out text-white font-medium py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
-                >
-                  Decline
-                </button>
+                  {request.status}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
