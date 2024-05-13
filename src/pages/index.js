@@ -2,6 +2,8 @@ export { default as AddRoute } from "./AddRoute/AddRoute.jsx";
 
 export { default as AllRoutes } from "./AllRoutes/AllRoutes.jsx";
 
+export { default as CarRent } from "./CarRent/CarRent.jsx";
+
 export { default as Dashboard } from "./Dashboard/Dashboard.jsx";
 
 export { default as Home } from "./Home/Home.jsx";

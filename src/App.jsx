@@ -12,6 +12,7 @@ import {
   AddRoute,
   Profile,
   Requests,
+  CarRent,
 } from "./pages/index.js";
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: "requests",
             element: <Requests />,
+          },
+          {
+            path: "car-rent",
+            element: <CarRent />,
           },
         ],
       },
