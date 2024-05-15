@@ -60,8 +60,10 @@ const AddRoute = () => {
 
   return (
     <div>
-      <h1 className="lg:text-[1.5rem] p-2 font-medium text-center text-white mt-4 font-montserrat bg-blueColor w-[70%] lg:w-[40%] mx-auto rounded-xl rounded-br-none shadow-xl">
-        Are you going somewhere? Add a route!
+      <h1 class="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
+          Add Your Route
+        </span>
       </h1>
       <Form
         method="post"

@@ -41,7 +41,7 @@ const Navbar = () => {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="block py-2 px-3 text-white rounded hover:bg-gray-100 ease-in-out duration-300 hover:text-blueColor md:hover:bg-transparent md:border-0 md:hover:text-bluePurple md:p-0"
+                  className="block py-2 px-3 text-white rounded hover:bg-gray-100 ease-in-out duration-300 hover:text-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-bluePurple md:p-0"
                 >
                   {link.title}
                 </a>
