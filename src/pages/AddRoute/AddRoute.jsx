@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
@@ -17,7 +17,14 @@ const AddRoute = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [dateAndTime, setDateAndTime] = useState(new Date());
+  const [type, setType] = useState("Passenger");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (type === "Package") {
+      setSeatsNumber("1");
+    }
+  }, [type]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,6 +46,7 @@ const AddRoute = () => {
               dateAndTime: dateAndTime.toISOString(),
               price: parseFloat(price),
               description: description,
+              type: type,
             },
           },
           {
@@ -60,8 +68,8 @@ const AddRoute = () => {
 
   return (
     <div>
-      <h1 class="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
+      <h1 className="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
           Add Your Route
         </span>
       </h1>
@@ -89,6 +97,20 @@ const AddRoute = () => {
             className="text-center"
           />
         </div>
+        <div className="flex items-center my-4">
+          <label htmlFor="type" className="mr-2">
+            Type:
+          </label>
+          <select
+            id="type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="border border-gray-300 rounded-md"
+          >
+            <option value="Passenger">Passenger</option>
+            <option value="Package">Package</option>
+          </select>
+        </div>
         <FormRow
           type="text"
           name="routeName"
@@ -96,13 +118,23 @@ const AddRoute = () => {
           value={routeName}
           onChange={(e) => setRouteName(e.target.value)}
         />
-        <FormRow
-          type="text"
-          name="seatsNumber"
-          labelText="Seats number"
-          value={seatsNumber}
-          onChange={(e) => setSeatsNumber(e.target.value)}
-        />
+        {type === "Package" ? (
+          <FormRow
+            type="text"
+            name="seatsNumber"
+            labelText="Number of packages"
+            value={seatsNumber}
+            onChange={(e) => setSeatsNumber(e.target.value)}
+          />
+        ) : (
+          <FormRow
+            type="text"
+            name="seatsNumber"
+            labelText="Seats number"
+            value={seatsNumber}
+            onChange={(e) => setSeatsNumber(e.target.value)}
+          />
+        )}
         <FormRow
           type="text"
           name="price"

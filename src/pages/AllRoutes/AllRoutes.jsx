@@ -81,7 +81,8 @@ const AllRoutes = () => {
                   <div className="mb-4">
                     <div className="flex sm:flex-row flex-col justify-between border-b-2">
                       <h2 className="text-xl font-bold">
-                        {item.user.firstName} {item.user.lastName}
+                        {item.user.firstName} {item.user.lastName} -{" "}
+                        {item.route.type}
                       </h2>
                       <p className="text-gray-600">
                         Kontakt: {item.user.phoneNumber}
@@ -94,12 +95,21 @@ const AllRoutes = () => {
                     </h3>
                     <div className="flex sm:flex-row justify-between items-center mb-2">
                       <div className="flex flex-col">
-                        <div className="flex">
-                          <p className="font-semibold mr-1">Seats:</p>
-                          <p className="text-greenColor">
-                            {item.route.seatsNumber}
-                          </p>
-                        </div>
+                        {item.route.type === "Package" ? (
+                          <div className="flex">
+                            <p className="font-semibold mr-1">Packages:</p>
+                            <p className="text-greenColor">
+                              {item.route.seatsNumber}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="flex">
+                            <p className="font-semibold mr-1">Seats:</p>
+                            <p className="text-greenColor">
+                              {item.route.seatsNumber}
+                            </p>
+                          </div>
+                        )}
                         <p className="sm:text-[2rem] text-greenColor">
                           {item.route.price}$
                         </p>
