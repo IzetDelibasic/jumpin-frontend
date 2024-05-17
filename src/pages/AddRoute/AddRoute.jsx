@@ -1,13 +1,15 @@
+// -React-
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import { Form, useNavigate } from "react-router-dom";
-import { FormRow } from "../../components";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
+// -Axios-
+import axios from "axios";
+// -Components-
+import { FormRow } from "../../components";
+// -Context-
 import { useDashboardContext } from "../Dashboard/Dashboard";
-import { backgroundImage } from "../../constants/ImageConstant";
 
 const AddRoute = () => {
   const { data, firstName, lastName, email, phoneNumber } =
@@ -97,7 +99,7 @@ const AddRoute = () => {
             className="text-center"
           />
         </div>
-        <div className="flex items-center my-4">
+        <div className="flex items-center my-4 font-montserrat">
           <label htmlFor="type" className="mr-2">
             Type:
           </label>
@@ -105,7 +107,7 @@ const AddRoute = () => {
             id="type"
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="border border-gray-300 rounded-md"
+            className="border border-gray-300 rounded-md p-2 bg-blueColor text-white"
           >
             <option value="Passenger">Passenger</option>
             <option value="Package">Package</option>

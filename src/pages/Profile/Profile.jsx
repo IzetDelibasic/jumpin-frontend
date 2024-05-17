@@ -1,8 +1,11 @@
+// -React-
 import React, { useState, useEffect } from "react";
-import { useDashboardContext } from "../Dashboard/Dashboard";
-import axios from "axios";
+// -ReactIcons-
 import { FaUserCircle } from "react-icons/fa";
-import { profileBackground } from "../../constants/ImageConstant";
+// -Axios-
+import axios from "axios";
+// -Context-
+import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const Profile = () => {
   const { data, firstName, lastName, email, phoneNumber, userToken } =

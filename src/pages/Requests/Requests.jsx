@@ -1,7 +1,10 @@
+// -React-
 import React, { useEffect, useState } from "react";
-import { useDashboardContext } from "../Dashboard/Dashboard";
-import axios from "axios";
 import { toast } from "react-toastify";
+// -Context-
+import { useDashboardContext } from "../Dashboard/Dashboard";
+// -Axios-
+import axios from "axios";
 
 const Requests = () => {
   const { data, firstName, lastName, email, phoneNumber } =
@@ -110,6 +113,7 @@ const Requests = () => {
             <div key={index}>
               <div className="py-2">Route number: {index + 1}</div>
               <div className="rounded-lg flex flex-col sm:p-6 p-2 mb-4 bg-gray-100 shadow-2xl border-[1px] border-opacity-25 border-black hover:border-blueColor duration-300 ease-in-out">
+                <p>{request.userRoute.route.type}</p>
                 <div className="font-medium md:text-[2rem] border-b-[1px] border-blueColor md:w-[40%] mx-auto">
                   {request.userRoute.route.name}
                 </div>
@@ -174,6 +178,7 @@ const Requests = () => {
             <div key={index}>
               <div>Route {index + 1}</div>
               <div className="rounded-lg flex flex-col sm:p-6 p-2 mb-4 bg-gray-100 shadow-2xl border-[1px] border-opacity-25 border-black hover:border-blueColor duration-300 ease-in-out">
+                <p>{request.userRoute.route.type}</p>
                 <div className="font-medium md:text-[2rem] border-b-[1px] border-blueColor md:w-[40%] mx-auto">
                   {request.userRoute.route.name}
                 </div>

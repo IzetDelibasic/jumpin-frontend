@@ -1,8 +1,12 @@
+// -React-
 import React from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
-import { useDashboardContext } from "../Dashboard/Dashboard";
+// -Axios-
+import axios from "axios";
+// -Components-
 import { Ads } from "../../components";
+// -Context-
+import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const AllRoutes = () => {
   const { data, firstName, lastName, email, phoneNumber } =
@@ -34,6 +38,7 @@ const AllRoutes = () => {
             dateAndTime: route.dateAndTime,
             price: route.price,
             description: route.description,
+            type: route.type,
           },
         },
         description,

@@ -8,8 +8,6 @@ import { logoImage, backgroundImage } from "../../constants/ImageConstant";
 import axios from "axios";
 // -Components-
 import { FormRow } from "../../components";
-// -Cookies-
-import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

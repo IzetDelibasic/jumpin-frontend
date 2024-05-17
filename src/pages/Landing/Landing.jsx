@@ -6,6 +6,7 @@ import {
   landingImage,
   backgroundImage,
 } from "../../constants/ImageConstant";
+// -Components-
 import { LandingAction } from "../../components";
 
 const Landing = () => {

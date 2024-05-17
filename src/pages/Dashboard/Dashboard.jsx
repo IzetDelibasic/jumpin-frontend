@@ -1,7 +1,10 @@
+// -React-
 import React, { createContext, useEffect, useState, useContext } from "react";
-import axios from "axios";
-import { Navbar } from "../../components";
 import { Outlet } from "react-router-dom";
+// -Axios-
+import axios from "axios";
+// -Components-
+import { Navbar } from "../../components";
 
 export const DashboardContext = createContext();
 
