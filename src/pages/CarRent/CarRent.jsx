@@ -1,5 +1,6 @@
+// -React-
 import React from "react";
-
+// -MockData-
 import { rentMock } from "../../constants/RentMock";
 
 const CarRent = () => {

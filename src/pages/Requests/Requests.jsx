@@ -11,8 +11,8 @@ const Requests = () => {
     useDashboardContext();
   const [userRequests, setUserRequests] = useState([]);
   const [userRecievedRequests, setUserRecievedRequests] = useState([]);
-  console.log(userRecievedRequests);
-  console.log(userRequests);
+  const [selectedUserData, setSelectedUserData] = useState(null);
+
   useEffect(() => {
     const getUserSentRequests = async () => {
       const token = localStorage.getItem("jwtToken");
@@ -43,7 +43,6 @@ const Requests = () => {
           }
         );
         setUserRecievedRequests(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching received requests:", error);
       }
@@ -96,9 +95,26 @@ const Requests = () => {
       updatedRequests.splice(index, 1);
       setUserRecievedRequests(updatedRequests);
       toast.dismiss("Request declined.");
-      console.log(userRecievedRequests);
     } catch (error) {
       console.error("Error declining request:", error);
+    }
+  };
+
+  const fetchUserData = async (email) => {
+    const token = localStorage.getItem("jwtToken");
+    try {
+      const response = await axios.get(
+        `https://localhost:7065/api/User/GetUserByEmail`,
+        { email },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setSelectedUserData(response.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
     }
   };
 
@@ -106,9 +122,7 @@ const Requests = () => {
     <div className="bg-gray-100">
       <div className="w-[90%] mx-auto p-8 my-4 rounded-md flex flex-col justify-between font-cabin">
         <div className="text-center">
-          <h2 className="text-xl font-semibold mt-8 mb-4 ">
-            Recieved Requests
-          </h2>
+          <h2 className="text-xl font-semibold mt-8 mb-4">Received Requests</h2>
           {userRecievedRequests.map((request, index) => (
             <div key={index}>
               <div className="py-2">Route number: {index + 1}</div>
@@ -117,7 +131,15 @@ const Requests = () => {
                 <div className="font-medium md:text-[2rem] border-b-[1px] border-blueColor md:w-[40%] mx-auto">
                   {request.userRoute.route.name}
                 </div>
-                <div>Passenger: {request.passengerEmail}</div>
+                <div>
+                  Passenger:{" "}
+                  <span
+                    className="text-blue-500 cursor-pointer"
+                    onClick={() => fetchUserData(request.passengerEmail)}
+                  >
+                    {request.passengerEmail}
+                  </span>
+                </div>
                 <div className="flex flex-col sm:flex-row justify-between items-center mb-2">
                   <div className="flex flex-col">
                     <div className="flex">
@@ -165,6 +187,17 @@ const Requests = () => {
                   </button>
                 </div>
               </div>
+              {selectedUserData && (
+                <div className="mt-4 p-4 bg-white shadow-lg rounded-lg">
+                  <h3 className="font-semibold">User Information</h3>
+                  <p>
+                    Name: {selectedUserData.firstName}{" "}
+                    {selectedUserData.lastName}
+                  </p>
+                  <p>Email: {selectedUserData.email}</p>
+                  <p>Phone: {selectedUserData.phoneNumber}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
