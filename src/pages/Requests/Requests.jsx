@@ -12,6 +12,11 @@ const Requests = () => {
   const [userRequests, setUserRequests] = useState([]);
   const [userRecievedRequests, setUserRecievedRequests] = useState([]);
   const [selectedUserData, setSelectedUserData] = useState(null);
+  const [userInfoBox, setUserInfoBox] = useState({
+    visible: false,
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     const getUserSentRequests = async () => {
@@ -50,7 +55,19 @@ const Requests = () => {
 
     getUserSentRequests();
     getRecievedRequests();
-  }, []);
+
+    const handleClickOutside = (event) => {
+      if (userInfoBox.visible && !event.target.closest(".user-info-box")) {
+        setUserInfoBox({ visible: false, x: 0, y: 0 });
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [userInfoBox]);
 
   const acceptRequest = async (index) => {
     const token = localStorage.getItem("jwtToken");
@@ -100,26 +117,33 @@ const Requests = () => {
     }
   };
 
-  const fetchUserData = async (email) => {
+  const fetchUserData = async (email, event) => {
     const token = localStorage.getItem("jwtToken");
     try {
-      const response = await axios.get(
+      const emailPayload = JSON.stringify(email);
+      const response = await axios.post(
         `https://localhost:7065/api/User/GetUserByEmail`,
-        { email },
+        emailPayload,
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
       setSelectedUserData(response.data);
+      setUserInfoBox({
+        visible: true,
+        x: event.clientX - 150,
+        y: event.clientY - 30,
+      });
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 relative">
       <div className="w-[90%] mx-auto p-8 my-4 rounded-md flex flex-col justify-between font-cabin">
         <div className="text-center">
           <h2 className="text-xl font-semibold mt-8 mb-4">Received Requests</h2>
@@ -134,8 +158,8 @@ const Requests = () => {
                 <div>
                   Passenger:{" "}
                   <span
-                    className="text-blue-500 cursor-pointer"
-                    onClick={() => fetchUserData(request.passengerEmail)}
+                    className="text-greenColor underline cursor-pointer"
+                    onClick={(e) => fetchUserData(request.passengerEmail, e)}
                   >
                     {request.passengerEmail}
                   </span>
@@ -187,8 +211,11 @@ const Requests = () => {
                   </button>
                 </div>
               </div>
-              {selectedUserData && (
-                <div className="mt-4 p-4 bg-white shadow-lg rounded-lg">
+              {userInfoBox.visible && selectedUserData && (
+                <div
+                  className="user-info-box mt-0 p-4 sm:p-10 bg-white border-[1px] border-black border-opacity-20 shadow-lg rounded-lg rounded-bl-none absolute"
+                  style={{ top: userInfoBox.y, left: userInfoBox.x }}
+                >
                   <h3 className="font-semibold">User Information</h3>
                   <p>
                     Name: {selectedUserData.firstName}{" "}
