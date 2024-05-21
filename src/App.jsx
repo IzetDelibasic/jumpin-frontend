@@ -13,6 +13,7 @@ import {
   Profile,
   Requests,
   CarRent,
+  FlatRent,
 } from "./pages/index.js";
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
           {
             path: "car-rent",
             element: <CarRent />,
+          },
+          {
+            path: "flat-rent",
+            element: <FlatRent />,
           },
         ],
       },

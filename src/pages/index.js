@@ -6,6 +6,8 @@ export { default as CarRent } from "./CarRent/CarRent.jsx";
 
 export { default as Dashboard } from "./Dashboard/Dashboard.jsx";
 
+export { default as FlatRent } from "./FlatRent/FlatRent.jsx";
+
 export { default as Home } from "./Home/Home.jsx";
 
 export { default as Landing } from "./Landing/Landing.jsx";

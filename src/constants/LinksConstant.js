@@ -16,6 +16,10 @@ export const Links = [
     href: "/dashboard/car-rent",
   },
   {
+    title: "Flat Rent",
+    href: "/dashboard/flat-rent",
+  },
+  {
     title: "Profile",
     href: "/dashboard/profile",
   },
