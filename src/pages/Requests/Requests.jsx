@@ -216,13 +216,25 @@ const Requests = () => {
                   className="user-info-box mt-0 p-4 sm:p-10 bg-white border-[1px] border-black border-opacity-20 shadow-lg rounded-lg rounded-bl-none absolute"
                   style={{ top: userInfoBox.y, left: userInfoBox.x }}
                 >
-                  <h3 className="font-semibold">User Information</h3>
-                  <p>
-                    Name: {selectedUserData.firstName}{" "}
-                    {selectedUserData.lastName}
-                  </p>
-                  <p>Email: {selectedUserData.email}</p>
-                  <p>Phone: {selectedUserData.phoneNumber}</p>
+                  <h3 className="font-semibold md:text-[1.2rem]">
+                    User Information
+                  </h3>
+                  <div className="flex flex-col sm:flex-row items-center justify-center">
+                    <p className="font-medium md:mr-1">Name:</p>
+                    <p className="text-greenColor">
+                      {selectedUserData.firstName} {selectedUserData.lastName}
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center justify-center">
+                    <p className="font-medium md:mr-1">Email:</p>
+                    <p className="text-greenColor"> {selectedUserData.email}</p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center justify-center">
+                    <p className="font-medium md:mr-1">Phone:</p>
+                    <p className="text-greenColor">
+                      {selectedUserData.phoneNumber}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>

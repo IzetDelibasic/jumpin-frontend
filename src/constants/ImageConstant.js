@@ -6,10 +6,8 @@ export const landingImage = "./images/landingMap.jpg";
 
 export const profileBackground = "./images/profileBackground.jpg";
 
-export const testLogoOne = "./images/testLogoOne.png";
+export const testLogoOne = "./images/centrotoursLogo.png";
 
-export const testLogoTwo = "./images/testLogoTwo.png";
+export const testLogoTwo = "./images/flixBusLogo.png";
 
-export const testLogoThree = "./images/testLogoThree.png";
-
-export const testLogoFour = "./images/testLogoFour.png";
+export const testLogoThree = "./images/letsGoLogo.png";

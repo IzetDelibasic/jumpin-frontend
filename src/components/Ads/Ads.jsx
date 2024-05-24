@@ -7,9 +7,18 @@ import {
 
 const Ads = () => {
   const [ads, setAds] = useState([
-    { text: "Huawei", image: testLogoOne },
-    { text: "Toblerone", image: testLogoTwo },
-    { text: "McDonald's", image: testLogoThree },
+    {
+      text: "Vaše nezaboravno putovanje počinje ovdje - Centrotours, centar svjetskih avantura.",
+      image: testLogoOne,
+    },
+    {
+      text: "Putujte širom Europe uz Flixbus - povoljan, udoban i ekološki prihvatljiv način putovanja.",
+      image: testLogoTwo,
+    },
+    {
+      text: "Svaka staza vodi ka nezaboravnim uspomenama - Let's Go",
+      image: testLogoThree,
+    },
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -37,9 +46,9 @@ const Ads = () => {
             <img
               src={ad.image}
               alt={`Reklama ${index + 1}`}
-              className="w-14 h-12 mr-2"
+              className="w-14 h-10 mr-2"
             />
-            <h3 className="text-lg">{ad.text}</h3>
+            <h3 className="text-lg font-montserrat">{ad.text}</h3>
           </div>
         ))}
       </div>
