@@ -32,7 +32,10 @@ const FlatRent = () => {
             <h2 className="text-[1.5rem]">{flat.flatType}</h2>
             <p>{flat.rentContact}</p>
             <div className="flex flex-col sm:flex-row justify-between items-center mx-8">
-              <p className="text-greenColor text-[1.5rem]">${flat.rentPrice}</p>
+              <p className="text-greenColor text-[1.5rem]">
+                {" "}
+                €{flat.rentPrice}
+              </p>
               <div className="flex flex-col justify-between mx-4">
                 <p>{flat.rentHouse},</p>
                 <p>{flat.rentCity}</p>

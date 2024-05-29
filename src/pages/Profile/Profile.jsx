@@ -17,7 +17,7 @@ const Profile = () => {
     const getUserRoutes = async () => {
       const token = localStorage.getItem("jwtToken");
       const response = await axios.get(
-        "https://localhost:7065/api/User/GetUserRoutes",
+        "https://jumpinappapi.azurewebsites.net/api/User/GetUserRoutes",
         {
           headers: {
             Authorization: `Bearer ${token}`,

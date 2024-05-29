@@ -34,7 +34,7 @@ const AddRoute = () => {
       const token = localStorage.getItem("jwtToken");
       if (seatsNumber >= 1 && seatsNumber <= 10) {
         const response = await axios.post(
-          "https://localhost:7065/api/Route/AddRoute",
+          "https://jumpinappapi.azurewebsites.net/api/Route/AddRoute",
           {
             user: {
               firstName: firstName,

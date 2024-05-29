@@ -1,18 +1,16 @@
-// -React-
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
-// -Axios-
 import axios from "axios";
-// -Components-
-import { Ads } from "../../components";
-// -Context-
+import { Ads, CustomPrompt } from "../../components";
 import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const AllRoutes = () => {
-  const { data, firstName, lastName, email, phoneNumber } =
-    useDashboardContext();
+  const { data } = useDashboardContext();
+  const [isPromptOpen, setPromptOpen] = useState(false);
+  const [currentRoute, setCurrentRoute] = useState(null);
+  const [currentRouteOwner, setCurrentRouteOwner] = useState(null);
 
-  const handleButtonClick = async (route, routeOwner) => {
+  const handleButtonClick = (route, routeOwner) => {
     const user = JSON.parse(localStorage.getItem("loggedInUserData"));
     const currentUserEmail = user ? user.email : null;
 
@@ -21,24 +19,36 @@ const AllRoutes = () => {
       return;
     }
 
-    const description = window.prompt("Enter description:");
+    // Check if request for this route already exists in local storage
+    const sentRequests = JSON.parse(localStorage.getItem("sentRequests")) || [];
+    if (sentRequests.includes(route.id)) {
+      // Assuming `route.id` is a unique identifier
+      toast.error("You already sent request for this route!");
+      return;
+    }
 
+    setCurrentRoute(route);
+    setCurrentRouteOwner(routeOwner);
+    setPromptOpen(true); // Open the custom prompt
+  };
+
+  const handlePromptConfirm = async (description) => {
     if (description) {
       const userRoute = {
         userRoute: {
           user: {
-            firstName: routeOwner.firstName,
-            lastName: routeOwner.lastName,
-            email: routeOwner.email,
-            phoneNumber: routeOwner.phoneNumber,
+            firstName: currentRouteOwner.firstName,
+            lastName: currentRouteOwner.lastName,
+            email: currentRouteOwner.email,
+            phoneNumber: currentRouteOwner.phoneNumber,
           },
           route: {
-            name: route.name,
-            seatsNumber: route.seatsNumber,
-            dateAndTime: route.dateAndTime,
-            price: route.price,
-            description: route.description,
-            type: route.type,
+            name: currentRoute.name,
+            seatsNumber: currentRoute.seatsNumber,
+            dateAndTime: currentRoute.dateAndTime,
+            price: currentRoute.price,
+            description: currentRoute.description,
+            type: currentRoute.type,
           },
         },
         description,
@@ -48,7 +58,7 @@ const AllRoutes = () => {
 
       try {
         const response = await axios.post(
-          "https://localhost:7065/api/Request/SendRequest",
+          "https://jumpinappapi.azurewebsites.net/api/Request/SendRequest",
           userRoute,
           {
             headers: {
@@ -58,8 +68,17 @@ const AllRoutes = () => {
         );
 
         console.log(response.data);
+
+        // Store the route ID in local storage to prevent future duplicate requests
+        const sentRequests =
+          JSON.parse(localStorage.getItem("sentRequests")) || [];
+        sentRequests.push(currentRoute.id); // Assuming `currentRoute.id` is a unique identifier
+        localStorage.setItem("sentRequests", JSON.stringify(sentRequests));
+
+        toast.success("Request sent successfully!");
       } catch (error) {
         console.error(error);
+        toast.error("You already sent request for this route!");
       }
     } else {
       toast.error("Description is required!");
@@ -69,15 +88,15 @@ const AllRoutes = () => {
   return (
     <div>
       <Ads />
-      <h1 class="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
+      <h1 className="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
           Jumpin Routes
         </span>
       </h1>
       <div className="grid grid-cols-1 font-cabin mx-auto p-4">
         {data.length > 0 ? (
-          data.map((item, index) => {
-            return (
+          data.map(
+            (item, index) =>
               item.route.seatsNumber !== 0 && (
                 <div
                   className="bg-white rounded-lg shadow-md p-6 mb-4 lg:mr-4 text-center lg:w-[95%] w-[90%] mx-auto border-[1px] border-opacity-25 border-black hover:border-blueColor ease-in-out duration-300"
@@ -116,7 +135,7 @@ const AllRoutes = () => {
                           </div>
                         )}
                         <p className="sm:text-[2rem] text-greenColor">
-                          {item.route.price}$
+                          {item.route.price}€
                         </p>
                       </div>
                       <div className="flex flex-col text-greenColor sm:text-[1.5rem]">
@@ -150,12 +169,16 @@ const AllRoutes = () => {
                   </button>
                 </div>
               )
-            );
-          })
+          )
         ) : (
           <p className="text-center">Empty array.</p>
         )}
       </div>
+      <CustomPrompt
+        isOpen={isPromptOpen}
+        onClose={() => setPromptOpen(false)}
+        onConfirm={handlePromptConfirm}
+      />
     </div>
   );
 };

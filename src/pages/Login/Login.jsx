@@ -31,7 +31,7 @@ const LoginPage = () => {
     if (!formValid) return;
     try {
       const response = await axios.post(
-        "https://localhost:7065/api/User/UserLogin",
+        "https://jumpinappapi.azurewebsites.net/api/User/UserLogin",
         userData
       );
       const { firstName, lastName, email, phoneNumber, userToken } =

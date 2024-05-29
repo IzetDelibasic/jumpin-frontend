@@ -34,7 +34,7 @@ const CarRent = () => {
             </h2>
             <p>{car.contact}</p>
             <div className="flex flex-col sm:flex-row justify-between items-center mx-8">
-              <p className="text-greenColor text-[1.5rem]">${car.rentPrice}</p>
+              <p className="text-greenColor text-[1.5rem]">€{car.rentPrice}</p>
               <div className="flex flex-col justify-between mx-4">
                 <p>{car.rentHouse},</p>
                 <p>{car.rentCity}</p>

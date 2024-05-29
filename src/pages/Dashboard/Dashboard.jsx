@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     try {
       axios
-        .get("https://localhost:7065/api/Route/GetRoutes", {
+        .get("https://jumpinappapi.azurewebsites.net/api/Route/GetRoutes", {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },

@@ -59,7 +59,7 @@ const Register = () => {
     };
     try {
       const response = await axios.post(
-        "https://localhost:7065/api/User/UserRegistration",
+        "https://jumpinappapi.azurewebsites.net/api/User/UserRegistration",
         userData
       );
       toast.success("Registration successful!");

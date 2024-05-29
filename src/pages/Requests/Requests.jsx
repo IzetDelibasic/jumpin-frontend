@@ -23,7 +23,7 @@ const Requests = () => {
       const token = localStorage.getItem("jwtToken");
       try {
         const response = await axios.get(
-          "https://localhost:7065/api/Request/GetSentRequests",
+          "https://jumpinappapi.azurewebsites.net/api/Request/GetSentRequests",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ const Requests = () => {
       const token = localStorage.getItem("jwtToken");
       try {
         const response = await axios.get(
-          "https://localhost:7065/api/Request/GetRecivedRequests",
+          "https://jumpinappapi.azurewebsites.net/api/Request/GetRecivedRequests",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -78,7 +78,8 @@ const Requests = () => {
       status: userRecievedRequests[index].status,
     };
     try {
-      const url = "https://localhost:7065/api/Request/AcceptOrDeclineRequest/1";
+      const url =
+        "https://jumpinappapi.azurewebsites.net/api/Request/AcceptOrDeclineRequest/1";
       await axios.post(url, requestData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -102,7 +103,8 @@ const Requests = () => {
       status: userRecievedRequests[index].status,
     };
     try {
-      const url = "https://localhost:7065/api/Request/AcceptOrDeclineRequest/0";
+      const url =
+        "https://jumpinappapi.azurewebsites.net/api/Request/AcceptOrDeclineRequest/0";
       await axios.post(url, requestData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -122,7 +124,7 @@ const Requests = () => {
     try {
       const emailPayload = JSON.stringify(email);
       const response = await axios.post(
-        `https://localhost:7065/api/User/GetUserByEmail`,
+        `https://jumpinappapi.azurewebsites.net/api/User/GetUserByEmail`,
         emailPayload,
         {
           headers: {
