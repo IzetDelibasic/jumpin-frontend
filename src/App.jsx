@@ -14,8 +14,6 @@ import {
   FlatRent,
 } from "./pages/index.js";
 
-console.log("App.jsx is loaded");
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,7 +66,6 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  console.log("App component");
   return <RouterProvider router={router} />;
 };
 
