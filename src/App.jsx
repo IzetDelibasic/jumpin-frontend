@@ -1,7 +1,5 @@
-// - React -
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-// - Pages -
 import {
   Home,
   Landing,
@@ -15,6 +13,8 @@ import {
   CarRent,
   FlatRent,
 } from "./pages/index.js";
+
+console.log("App.jsx is loaded");
 
 const router = createBrowserRouter([
   {
@@ -68,6 +68,7 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  console.log("App component");
   return <RouterProvider router={router} />;
 };
 
