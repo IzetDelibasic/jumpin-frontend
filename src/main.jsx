@@ -4,12 +4,13 @@ import App from "./App.jsx";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-
-console.log("Main.jsx");
+import { ErrorBoundary } from "./components/index.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-    <ToastContainer position="top-center" />
+    <ErrorBoundary>
+      <App />
+      <ToastContainer position="top-center" />
+    </ErrorBoundary>
   </React.StrictMode>
 );
