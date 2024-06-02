@@ -1,3 +1,4 @@
+// - React -
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
@@ -18,48 +19,46 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/landing",
+    element: <Landing />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
     children: [
       {
         index: true,
-        element: <Landing />,
+        element: <AllRoutes />,
       },
       {
-        path: "register",
-        element: <Register />,
+        path: "add-route",
+        element: <AddRoute />,
       },
       {
-        path: "login",
-        element: <Login />,
+        path: "profile",
+        element: <Profile />,
       },
       {
-        path: "dashboard",
-        element: <Dashboard />,
-        children: [
-          {
-            index: true,
-            element: <AllRoutes />,
-          },
-          {
-            path: "add-route",
-            element: <AddRoute />,
-          },
-          {
-            path: "profile",
-            element: <Profile />,
-          },
-          {
-            path: "requests",
-            element: <Requests />,
-          },
-          {
-            path: "car-rent",
-            element: <CarRent />,
-          },
-          {
-            path: "flat-rent",
-            element: <FlatRent />,
-          },
-        ],
+        path: "requests",
+        element: <Requests />,
+      },
+      {
+        path: "car-rent",
+        element: <CarRent />,
+      },
+      {
+        path: "flat-rent",
+        element: <FlatRent />,
       },
     ],
   },
