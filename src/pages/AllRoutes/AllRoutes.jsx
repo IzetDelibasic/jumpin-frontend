@@ -19,17 +19,15 @@ const AllRoutes = () => {
       return;
     }
 
-    // Check if request for this route already exists in local storage
     const sentRequests = JSON.parse(localStorage.getItem("sentRequests")) || [];
     if (sentRequests.includes(route.id)) {
-      // Assuming `route.id` is a unique identifier
       toast.error("You already sent request for this route!");
       return;
     }
 
     setCurrentRoute(route);
     setCurrentRouteOwner(routeOwner);
-    setPromptOpen(true); // Open the custom prompt
+    setPromptOpen(true);
   };
 
   const handlePromptConfirm = async (description) => {
@@ -69,10 +67,9 @@ const AllRoutes = () => {
 
         console.log(response.data);
 
-        // Store the route ID in local storage to prevent future duplicate requests
         const sentRequests =
           JSON.parse(localStorage.getItem("sentRequests")) || [];
-        sentRequests.push(currentRoute.id); // Assuming `currentRoute.id` is a unique identifier
+        sentRequests.push(currentRoute.id);
         localStorage.setItem("sentRequests", JSON.stringify(sentRequests));
 
         toast.success("Request sent successfully!");

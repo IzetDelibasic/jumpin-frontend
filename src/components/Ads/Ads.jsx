@@ -41,14 +41,16 @@ const Ads = () => {
         {ads.map((ad, index) => (
           <div
             key={index}
-            className="flex-shrink-0 flex items-center justify-center w-full"
+            className="flex-shrink-0 flex items-center justify-center mx-auto w-full text-center"
           >
             <img
               src={ad.image}
               alt={`Reklama ${index + 1}`}
-              className="w-14 h-10 mr-2"
+              className="w-14 h-10 mr-2 ml-2"
             />
-            <h3 className="text-lg font-montserrat">{ad.text}</h3>
+            <h3 className="lg:text-lg text-[0.8rem] font-montserrat">
+              {ad.text}
+            </h3>
           </div>
         ))}
       </div>

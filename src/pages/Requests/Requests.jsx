@@ -294,9 +294,12 @@ const Requests = () => {
                 <div className="font-normal">Note: {request.description}</div>
                 <div
                   className={`font-normal text-[1.2rem] ${
-                    request.status === "Accepted"
+                    (request.status === "Accepted"
                       ? "text-green-500"
-                      : "text-red-500"
+                      : "text-gray-500",
+                    request.status === "Declined"
+                      ? "text-red-600"
+                      : "text-gray-500")
                   }`}
                 >
                   {request.status}

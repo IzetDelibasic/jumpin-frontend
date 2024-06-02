@@ -15,7 +15,7 @@ const CustomPrompt = ({ isOpen, onClose, onConfirm }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 font-montserrat text-center">
-      <div className="bg-white p-4 rounded shadow-lg max-w-sm w-full">
+      <div className="bg-white p-4 rounded shadow-lg max-w-sm w-full border-[1px] border-black">
         <h2 className="text-xl font-bold mb-4">Enter description:</h2>
         <textarea
           className="w-full p-2 border rounded mb-4"
