@@ -5,22 +5,22 @@ export const Links = [
   },
   {
     title: "Add Route",
-    href: "/dashboard/add-route",
+    href: "/add-route",
   },
   {
     title: "Requests",
-    href: "/dashboard/requests",
+    href: "/requests",
   },
   {
     title: "Car Rent",
-    href: "/dashboard/car-rent",
+    href: "/car-rent",
   },
   {
     title: "Flat Rent",
-    href: "/dashboard/flat-rent",
+    href: "/flat-rent",
   },
   {
     title: "Profile",
-    href: "/dashboard/profile",
+    href: "/profile",
   },
 ];
