@@ -37,27 +37,27 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: "/all-routes",
+    path: "/dashboard/all-routes",
     element: <AllRoutes />,
   },
   {
-    path: "/add-route",
+    path: "/dashboard/add-route",
     element: <AddRoute />,
   },
   {
-    path: "/profile",
+    path: "/dashboard/profile",
     element: <Profile />,
   },
   {
-    path: "/requests",
+    path: "/dashboard/requests",
     element: <Requests />,
   },
   {
-    path: "/car-rent",
+    path: "/dashboard/car-rent",
     element: <CarRent />,
   },
   {
-    path: "/flat-rent",
+    path: "/dashboard/flat-rent",
     element: <FlatRent />,
   },
 ]);
