@@ -107,7 +107,7 @@ const Register = () => {
             onChange={handleInputChange}
           />
           <FormRow
-            type="phone"
+            type="tel"
             name="phoneNumber"
             labelText="Phone Number"
             onChange={handleInputChange}
