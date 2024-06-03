@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 // -Components-
 import { Navbar } from "../../components";
+import AllRoutes from "../AllRoutes/AllRoutes";
 
 export const DashboardContext = createContext();
 
@@ -43,7 +44,7 @@ const Dashboard = () => {
     >
       <div className="bg-gray-50 min-h-screen flex flex-col">
         <Navbar />
-        <Outlet
+        <AllRoutes
           context={{ firstName, lastName, email, phoneNumber, userToken }}
         />
       </div>

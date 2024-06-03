@@ -35,32 +35,30 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
-    children: [
-      {
-        index: true,
-        element: <AllRoutes />,
-      },
-      {
-        path: "add-route",
-        element: <AddRoute />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
-      },
-      {
-        path: "requests",
-        element: <Requests />,
-      },
-      {
-        path: "car-rent",
-        element: <CarRent />,
-      },
-      {
-        path: "flat-rent",
-        element: <FlatRent />,
-      },
-    ],
+  },
+  {
+    path: "/all-routes",
+    element: <AllRoutes />,
+  },
+  {
+    path: "/add-route",
+    element: <AddRoute />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "/requests",
+    element: <Requests />,
+  },
+  {
+    path: "/car-rent",
+    element: <CarRent />,
+  },
+  {
+    path: "/flat-rent",
+    element: <FlatRent />,
   },
 ]);
 
