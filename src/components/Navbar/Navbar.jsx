@@ -1,15 +1,15 @@
+// -React-
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// -Icons-
 import { FaLocationArrow } from "react-icons/fa";
-import { useDashboardContext } from "../../pages/Dashboard/Dashboard";
-import { Links } from "../../constants/LinksConstant";
 import { MdLogout } from "react-icons/md";
-import { FiMenu } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
+// -Constants-
+import { Links } from "../../constants/LinksConstant";
 
 const Navbar = () => {
-  const { firstName, lastName, email, phoneNumber } = useDashboardContext();
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {

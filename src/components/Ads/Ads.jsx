@@ -1,4 +1,6 @@
+// -React-
 import React, { useState, useEffect } from "react";
+// -Constants-
 import {
   testLogoOne,
   testLogoTwo,

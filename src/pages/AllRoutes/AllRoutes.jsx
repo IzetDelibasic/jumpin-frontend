@@ -1,6 +1,9 @@
+// -React-
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+// -Axios-
 import axios from "axios";
+// -Components-
 import { Ads, CustomPrompt } from "../../components";
 
 const AllRoutes = () => {

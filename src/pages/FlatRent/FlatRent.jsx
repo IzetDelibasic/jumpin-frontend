@@ -6,9 +6,9 @@ import { flatMock } from "../../constants/FlatMock";
 import { Navbar } from "../../components";
 
 const FlatRent = () => {
-  <Navbar />;
   return (
     <div>
+      <Navbar />
       <h1 class="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
         <span class="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
           Jumpin Flat Rent
@@ -18,7 +18,6 @@ const FlatRent = () => {
           available flats in that city and continue your adventure.
         </p>
       </h1>
-
       <div className="grid md:grid-cols-2 grid-cols-1 text-center font-cabin">
         {flatMock.map((flat, index) => (
           <div

@@ -1,3 +1,4 @@
+// -React-
 import React, { useState } from "react";
 
 const CustomPrompt = ({ isOpen, onClose, onConfirm }) => {

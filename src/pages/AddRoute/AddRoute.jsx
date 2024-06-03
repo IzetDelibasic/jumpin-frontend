@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 // -Axios-
 import axios from "axios";
 // -Components-
-import { FormRow } from "../../components";
-import { Navbar } from "../../components";
+import { FormRow, Navbar } from "../../components";
 
 const AddRoute = () => {
   const storedUserData = localStorage.getItem("loggedInUserData");

@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 // -Axios-
 import axios from "axios";
+// -Components-
+import { Navbar } from "../../components";
 
 const Profile = () => {
   const storedUserData = localStorage.getItem("loggedInUserData");
@@ -40,6 +42,7 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col">
+      <Navbar />
       <div className="my-4 bg-white w-[90%] md:w-[60%] text-black text-center border-[1px] border-gray-300 mx-auto font-montserrat p-4 rounded-md shadow-2xl flex flex-col">
         <div className="flex items-center justify-center bg-blueColor mb-2 text-white">
           <div className="font-medium mr-1">{firstName}</div>
