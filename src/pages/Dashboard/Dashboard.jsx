@@ -1,6 +1,5 @@
 // -React-
 import React, { createContext, useEffect, useState, useContext } from "react";
-import { Outlet } from "react-router-dom";
 // -Axios-
 import axios from "axios";
 // -Components-
@@ -17,6 +16,11 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    if (!userToken) {
+      window.location.href = "/login";
+      return;
+    }
+
     try {
       axios
         .get("https://jumpinappapi.azurewebsites.net/api/Route/GetRoutes", {
@@ -30,7 +34,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error(`There was an error retrieving the data: ${error}`);
     }
-  }, []);
+  }, [userToken]);
 
   return (
     <DashboardContext.Provider
@@ -44,9 +48,7 @@ const Dashboard = () => {
     >
       <div className="bg-gray-50 min-h-screen flex flex-col">
         <Navbar />
-        <AllRoutes
-          context={{ firstName, lastName, email, phoneNumber, userToken }}
-        />
+        <AllRoutes />
       </div>
     </DashboardContext.Provider>
   );

@@ -1,14 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Ads, CustomPrompt } from "../../components";
-import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const AllRoutes = () => {
-  const { data } = useDashboardContext();
+  const [data, setData] = useState([]);
   const [isPromptOpen, setPromptOpen] = useState(false);
   const [currentRoute, setCurrentRoute] = useState(null);
   const [currentRouteOwner, setCurrentRouteOwner] = useState(null);
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("loggedInUserData");
+    const { userToken } = storedUserData
+      ? JSON.parse(storedUserData)
+      : { userToken: "" };
+
+    axios
+      .get("https://jumpinappapi.azurewebsites.net/api/Route/GetRoutes", {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error(`There was an error retrieving the data: ${error}`);
+      });
+  }, []);
 
   const handleButtonClick = (route, routeOwner) => {
     const user = JSON.parse(localStorage.getItem("loggedInUserData"));
