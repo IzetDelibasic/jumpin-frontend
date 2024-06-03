@@ -4,12 +4,19 @@ import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 // -Axios-
 import axios from "axios";
-// -Context-
-import { useDashboardContext } from "../Dashboard/Dashboard";
 
 const Profile = () => {
-  const { data, firstName, lastName, email, phoneNumber, userToken } =
-    useDashboardContext();
+  const storedUserData = localStorage.getItem("loggedInUserData");
+  const { firstName, lastName, email, phoneNumber, userToken } = storedUserData
+    ? JSON.parse(storedUserData)
+    : {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        userToken: "",
+      };
+
   const [userRoutes, setUserRoutes] = useState([]);
   const [numberOfRoutes, setNumberOfRoutes] = useState(0);
 

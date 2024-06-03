@@ -1,14 +1,12 @@
 // -React-
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-// -Context-
-import { useDashboardContext } from "../Dashboard/Dashboard";
 // -Axios-
 import axios from "axios";
+// -Components-
+import { Navbar } from "../../components";
 
 const Requests = () => {
-  const { data, firstName, lastName, email, phoneNumber } =
-    useDashboardContext();
   const [userRequests, setUserRequests] = useState([]);
   const [userRecievedRequests, setUserRecievedRequests] = useState([]);
   const [selectedUserData, setSelectedUserData] = useState(null);
@@ -146,6 +144,7 @@ const Requests = () => {
 
   return (
     <div className="bg-gray-100 relative">
+      <Navbar />
       <div className="w-[90%] mx-auto p-8 my-4 rounded-md flex flex-col justify-between font-cabin">
         <div className="text-center">
           <h2 className="text-xl font-semibold mt-8 mb-4">Received Requests</h2>

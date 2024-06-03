@@ -2,10 +2,13 @@
 import React from "react";
 // -MockData-
 import { rentMock } from "../../constants/RentMock";
+// -Components-
+import { Navbar } from "../../components";
 
 const CarRent = () => {
   return (
     <div>
+      <Navbar />
       <h1 class="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
         <span class="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
           Jumpin Car Rent

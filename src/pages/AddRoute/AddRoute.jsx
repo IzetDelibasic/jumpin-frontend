@@ -8,12 +8,19 @@ import { toast } from "react-toastify";
 import axios from "axios";
 // -Components-
 import { FormRow } from "../../components";
-// -Context-
-import { useDashboardContext } from "../Dashboard/Dashboard";
+import { Navbar } from "../../components";
 
 const AddRoute = () => {
-  const { data, firstName, lastName, email, phoneNumber } =
-    useDashboardContext();
+  const storedUserData = localStorage.getItem("loggedInUserData");
+  const { firstName, lastName, email, phoneNumber, userToken } = storedUserData
+    ? JSON.parse(storedUserData)
+    : {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        userToken: "",
+      };
   const [routeName, setRouteName] = useState("");
   const [seatsNumber, setSeatsNumber] = useState("");
   const [price, setPrice] = useState("");
@@ -70,6 +77,7 @@ const AddRoute = () => {
 
   return (
     <div>
+      <Navbar />
       <h1 className="my-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center">
         <span className="text-transparent bg-clip-text bg-gradient-to-r to-gray-400 from-blueColor">
           Add Your Route
