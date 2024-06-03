@@ -25,7 +25,6 @@ const LandingAction = () => {
           iconClassName=""
           title="Search Your Way"
           titleClassName="group-hover:text-white font-subtitle"
-          Icon={IoArrowForwardSharp}
         >
           <div className="absolute inset-0 bg-black w-full transform origin-right transition-transform duration-300 group-hover:scale-x-0 z-[-1]"></div>
         </CustomButton>

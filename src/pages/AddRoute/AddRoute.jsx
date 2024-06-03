@@ -87,6 +87,20 @@ const AddRoute = () => {
         className="flex flex-col items-center bg-white lg:w-[50%] sm:w-[70%] w-[85%] mx-auto mt-10 font-montserrat px-4 py-10 rounded-[3rem] shadow-2xl"
         onSubmit={handleSubmit}
       >
+        <div className="flex items-center my-4 font-montserrat">
+          <label htmlFor="type" className="mr-2">
+            Type:
+          </label>
+          <select
+            id="type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="border border-gray-300 rounded-md p-2 bg-blueColor text-white"
+          >
+            <option value="Passenger">Passenger</option>
+            <option value="Package">Package</option>
+          </select>
+        </div>
         <div className="flex flex-col items-start mx-auto">
           <label
             htmlFor="dateAndTime"
@@ -103,22 +117,8 @@ const AddRoute = () => {
             timeIntervals={15}
             timeCaption="time"
             dateFormat="d MMMM, h:mm aa"
-            className="text-center"
+            className="text-center bg-blueColor text-white rounded-md p-2"
           />
-        </div>
-        <div className="flex items-center my-4 font-montserrat">
-          <label htmlFor="type" className="mr-2">
-            Type:
-          </label>
-          <select
-            id="type"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="border border-gray-300 rounded-md p-2 bg-blueColor text-white"
-          >
-            <option value="Passenger">Passenger</option>
-            <option value="Package">Package</option>
-          </select>
         </div>
         <FormRow
           type="text"
